@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -P STM_LM_NGS
+#PBS -l select=1:ncpus=1:mem=1GB
+#PBS -l walltime=48:00:00
+#PBS -q alloc-zz
+
+
+################################################################################################
+# Shell script to execute a modified version of nullarbor
+# Author: Mailie Gall
+# Date: May 2019
+# Acknowledgements: This is a hack of Nullarbor v1.3 written by Torsten Seeman.
+# Description:
+# This wrapper script is the entry-point for versions of nullarbor which have been modified for faster execution.
+# This includes switching off the following tools, which are not use by CIDM, and slow down the analysis:
+# - roary
+# - kraken
+#
+# The nullarbor perl script has been split into 'isolate' vs 'population-level' analyses. This allows the isolate analysis to be scattered across
+# cpus, and then gathered for execution once these analyses are complete.
+# Please be forgiving - this is not an elegant, true parallel solution but an ugly hack.
+
+wkdir="/scratch/TRG_STM/mailie"
+
+job1=$(qsub nullarbor-fast-isolate.pbs)
+
+job2=$(qsub -W depend=afterok:$job1 wrapper-nullarbor-fast-pop.pbs)

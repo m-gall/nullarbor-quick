@@ -1,0 +1,28 @@
+Synopsis:
+  Nullarbor job runner makefile syntax
+
+Usage:
+  make [command]
+
+Commands:
+
+  help		Show this help
+  all		Do all the analyses and generate the report
+  report	(Re-)generate a report
+  publish	Place web report in folder specified in nullarbor.conf file
+
+  clip		Just do enough to clip all the reads
+  denovo	Just do enough to get genome assemblies
+  mlst		Just do enough to genotype using MLST
+  abricate	Just do enough to call AMR genes
+  prokka	Just do enough to get annotated genomes
+  roary		Just do enough to generate the pan-genome
+
+  again		Re-generate the Makefile, useful if Nullarbor now has new featues
+  list		List the isolates in this analysis
+  space		Delete most of the unnecessary big files
+  panic		In case of emergency only!
+
+More help:
+  https://github.com/tseemann/nullarbor#nullarbor
+

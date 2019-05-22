@@ -1,0 +1,41 @@
+#!/bin/bash
+#PBS -P STM_LM_NGS
+#PBS -l select=1:ncpus=24:mem=64GB
+#PBS -l walltime=24:00:00
+#PBS -q alloc-zz
+
+
+
+################################################################################################
+# Shell script to execute a modified version of nullarbor
+# Author: Mailie Gall
+# Date: May 2019
+# Acknowledgements: This is a hack of Nullarbor v1.3 written by Torsten Seeman.
+# Description:
+# This wrapper script is the entry-point for versions of nullarbor which have been modified for faster execution.
+# This includes switching off the following tools, which are not use by CIDM, and slow down the analysis:
+# - roary
+# - kraken
+#
+# The nullarbor perl script has been split into 'isolate' vs 'population-level' analyses. This allows the isolate analysis to be scattered across
+# cpus, and then gathered for execution once these analyses are complete.
+# Please be forgiving - this is not an elegant, true parallel solution but an ugly hack.
+
+module load nullarbor/1.3-dev
+
+export KRAKEN_DEFAULT_DB='/project/data/kraken/minikraken_20141208'
+
+wkdir="/scratch/TRG_STM/mailie"
+
+cd $wkdir
+
+input="test_files/fastq/inputfile.tsv"
+outputdir="test_files/output/test-1"
+reference="test_files/reference/ref.fa"
+project_name="population"
+
+NULLABOR_HOME="/scratch/TRG_STM/mailie/programs/nullarbor/v13"
+
+echo [$(date +"%m/%d/%y  %H:%M:%S")] Nullarbor fast population-level analyses started
+
+perl ${NULLABOR_HOME}/nullarbor-fast-population.pl --name $project_name --input $input --outdir $outputdir --ref $reference --accurate --force --run;
