@@ -1,0 +1,10 @@
+# ignore a single file
+
+# ignore an entire directory
+/test_files/*
+
+# ignore a file type
+.DS_Store
+
+# add an exception (using !) to the preceding rule to track a specific file
+#!package.json
