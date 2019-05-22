@@ -99,8 +99,8 @@ push @html, "<h1>$name</h1>\n";
 #                 assembly reference core phylotree snpdist snpdensity pan
 #                 tools databases about);
 
-my @section = qw(jobinfo seqdata identification mlst serotype resistome virulome plasmidome
-                  assembly reference core
+my @section = qw(jobinfo seqdata identification mlst resistome virulome plasmidome
+                  reference
                   tools databases about);
 
 if ($preview) {

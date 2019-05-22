@@ -551,13 +551,11 @@ preview.msh : $(addsuffix /sketch.msh,$(ISOLATES))
 info :
   @echo CPUS: $(CPUS)
   @echo REF: $(REF)
-  $(info   text…)
 
-
-#report/index.html : ref.fa.fai yield denovo.tab mlst.tab virulome resistome kraken core.svg distances.tab roary/pan.svg roary/acc.svg
+#report/index.html : ref.fa.fai yield denovo.tab mlst.tab core.aln virulome resistome kraken core.svg distances.tab roary/pan.svg roary/acc.svg
 #  nullarbor-report.pl --name $(NAME) --indir . --outdir report
 
-report-isolate/index-fast-isolate.html : ref.fa.fai yield virulome resistome plasmidome kraken
+report-isolate/index-fast-isolate.html : ref.fa.fai yield mlst.tab core.aln virulome resistome plasmidome kraken
   $(BINDIR)/nullarbor-report-fast-isolate.pl --name $(NAME) --indir . --outdir report-isolate
 
 publish : report-isolate/index-fast-isolate.html
@@ -567,6 +565,8 @@ publish : report-isolate/index-fast-isolate.html
 $(FASTAREF) : $(REF)
   seqret -auto -filter -osformat2 fasta < $< > $@
   touch --reference=$< $@
+
+SNIPPY_VCFS := $(addsuffix /snps.vcf,$(ISOLATES))
 
 %/snps.vcf : $(REF) %/R1.fq.gz %/R2.fq.gz
   snippy --force --cpus $(CPUS) --outdir $(@D)/snippy --ref $(word 1,$^) --R1 $(word 2,$^) --R2 $(word 3,$^)
@@ -583,19 +583,18 @@ kraken : $(addsuffix /kraken.tab,$(ISOLATES))
 
 yield : $(addsuffix /yield.tab,$(ISOLATES))
 
-SNIPPY_VCFS := $(addsuffix /snps.vcf,$(ISOLATES))
+mlst.tab : $(FASTAREF) $(CONTIGS)
+  mlst $^ > $@
+  cp mlst.tab $(@D)/$(ISOLATES)
 
-#mlst.tab : $(FASTAREF) $(CONTIGS)
-#  mlst $^ > $@
-
-#denovo.tab : $(CONTIGS)
-# ${BINDIR}/fa --minsize $(MIN_CTG_LEN) -e -t $^ > $@
+denovo.tab : $(CONTIGS)
+ ${BINDIR}/fa --minsize $(MIN_CTG_LEN) -e -t $^ > $@
 
 # distances.tab : core.aln
 #   snp-dists -b $< > $@
 
 core.aln : $(FASTAREF) $(SNIPPY_VCFS)
-  $(SNIPPYCORE) --ref $< $(ISOLATES)
+#  $(SNIPPYCORE) --ref $< $(ISOLATES)
 
 %.gff : %/contigs.gff
   ln -f $< $@
