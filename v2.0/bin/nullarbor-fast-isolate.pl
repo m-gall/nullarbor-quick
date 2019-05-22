@@ -556,11 +556,12 @@ info :
 #  nullarbor-report.pl --name $(NAME) --indir . --outdir report
 
 report-isolate/index-fast-isolate.html : ref.fa.fai yield mlst.tab core.aln virulome resistome plasmidome kraken
-  $(BINDIR)/nullarbor-report-fast-isolate.pl --name $(NAME) --indir . --outdir report-isolate
+  $(BINDIR)/nullarbor-report-fast-isolate.pl --name $(NAME) --indir . --outdir report-isolate-$(ISOLATES)
+  mv report-isolate-$(ISOLATES) $(ISOLATES) 
 
-publish : report-isolate/index-fast-isolate.html
-  mkdir -p $(PUBLISH_DIR)/$(NAME)
-  install -p -D -t $(PUBLISH_DIR)/$(NAME) report-isolate/*
+#publish : report-isolate/index-fast-isolate.html
+#  mkdir -p $(PUBLISH_DIR)/$(NAME)
+#  install -p -D -t $(PUBLISH_DIR)/$(NAME) report-isolate/*
 
 $(FASTAREF) : $(REF)
   seqret -auto -filter -osformat2 fasta < $< > $@
