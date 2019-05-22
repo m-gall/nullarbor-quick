@@ -563,7 +563,7 @@ info :
 cleanup_mlst: mlst.tab
   rm ${mlst.tab}
 
-report-population/index.html : yield denovo.tab mlst.tab core.aln virulome resistome plasmidome kraken core.svg distances.tab
+report-population/index.html : yield denovo.tab mlst.tab2 core.aln virulome resistome plasmidome kraken core.svg distances.tab
 #  /tmp/nullarbor_mgall/v2.0/bin/nullarbor-report-fast-population.pl --name $(NAME) --indir . --outdir report
   $(BINDIR)/nullarbor-report-fast-population.pl --name $(NAME) --indir . --outdir report
 
@@ -587,9 +587,11 @@ yield : $(addsuffix /yield.tab,$(ISOLATES))
 
 SNIPPY_VCFS := $(addsuffix /snps.vcf,$(ISOLATES))
 
-mlst.tab : $(FASTAREF) $(CONTIGS)
-  rm mlst.tab
+mlst.tab2 : $(FASTAREF) $(CONTIGS)
   mlst $^ > $@
+  cp mlst.tab2 mlst.tab
+  rm mlst.tab2
+
 
 denovo.tab : $(CONTIGS)
   fa --minsize $(MIN_CTG_LEN) -e -t $^ > $@
