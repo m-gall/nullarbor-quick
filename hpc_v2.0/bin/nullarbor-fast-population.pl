@@ -19,9 +19,10 @@ use Term::ANSIColor;
 
 use FindBin;
 use lib "$FindBin::RealBin/../perl5";
+#use lib "/tmp/nullarbor_mgall/v2.0/perl5";
 use Nullarbor::IsolateSet;
 use Nullarbor::Logger qw(msg err);
-#use Nullarbor::Report;
+use Nullarbor::Report;
 use Nullarbor::Requirements qw(require_exe require_perlmod require_version require_var require_file);
 use Nullarbor::Utils qw(num_cpus);
 use Nullarbor::Plugins;
@@ -30,8 +31,8 @@ use Nullarbor::Plugins;
 # constants
 
 my $EXE = "$FindBin::RealScript";
-my $VERSION = '2.0.20181010-fast hack';
-my $AUTHOR = 'Torsten Seemann with some modifications by Mailie Gall';
+my $VERSION = '2.0.20181010';
+my $AUTHOR = 'Torsten Seemann';
 my $URL = "https://github.com/tseemann/nullarbor";
 my @CMDLINE = ($0, @ARGV);
 my $APPDIR = realpath("$FindBin::RealBin/../.");
@@ -177,7 +178,6 @@ $set->load($input);
 msg("Loaded", $set->num, "isolates:", $set->ids);
 $set->num >= 1 or err("$EXE requires a mininum of 4 isolates to run (due to Roary)");
 msg("There are $set samples loaded");
-#$set->num >= 4 or err("$EXE requires a mininum of 4 isolates to run (due to Roary)");
 $input = realpath($input);
 
 if ($mask and $mask ne 'auto') {
@@ -248,7 +248,7 @@ my $R2 = "R2.fq.gz";
 
 my @CMDLINE_NO_FORCE = grep !m/^--?f\S*$/, @CMDLINE; # remove --force / -f etc
 $make{'again'} = {
-  CMD => "(rm -fr roary/ roary_*/ report-isolate/ core.* *.gff {denovo,mlst}.tab preview.* tree.* distances.tab && cd .. && @CMDLINE_NO_FORCE --force)",
+  CMD => "(rm -fr roary/ roary_*/ report/ core.* *.gff {denovo,mlst}.tab preview.* tree.* distances.tab && cd .. && @CMDLINE_NO_FORCE --force)",
 };
 
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -277,39 +277,37 @@ for my $s ($set->isolates) {
   # we need this special rule to handle the 'double dependency' problem
   # http://www.gnu.org/software/automake/manual/html_node/Multiple-Outputs.html#Multiple-Outputs
   $make{$clipped[1]} = {
-    DEP => [ $clipped[0] ]
-    };
+    DEP => [ $clipped[0] ],
+  };
 
 }
-msg("End isolate rules");
-
 close ISOLATES;
 #END per isolate
 
 #.............................................................................
 
-# if ($prefill) {
-#   msg("Pre-filling $outdir");
-#   my $src = $cfg->{prefill};
-#   #msg(Dumper($src));
-#   for my $file (sort keys %$src) {
-#     my $copied=0;
-#     msg("Pre-filling '$file' from", $src->{$file});
-#     for my $s ($set->isolates) {
-#       my $id = $s->id;
-#       my $path = $src->{$file};
-#       $path =~ s/{ID}/$id/g or err("Could not find {ID} placeholder in '$path'");
-#       next unless -r $path;
-#       my $dest = "$outdir/$id/$file";
-#       my $opts = $verbose ? "-v" : "";
-#       my $cmd = "install $opts -p -m 0644 -T '$path' '$dest'"; # -p preserve timestamp
-#       system($cmd)==0 or err("Could not run: $cmd");
-#       $copied++;
-#     }
-#     my $missing = scalar($set->isolates) - $copied;
-#     msg("Pre-filled $copied '$file' files ($missing missing)");
-#   }
-# }
+if ($prefill) {
+  msg("Pre-filling $outdir");
+  my $src = $cfg->{prefill};
+  #msg(Dumper($src));
+  for my $file (sort keys %$src) {
+    my $copied=0;
+    msg("Pre-filling '$file' from", $src->{$file});
+    for my $s ($set->isolates) {
+      my $id = $s->id;
+      my $path = $src->{$file};
+      $path =~ s/{ID}/$id/g or err("Could not find {ID} placeholder in '$path'");
+      next unless -r $path;
+      my $dest = "$outdir/$id/$file";
+      my $opts = $verbose ? "-v" : "";
+      my $cmd = "install $opts -p -m 0644 -T '$path' '$dest'"; # -p preserve timestamp
+      system($cmd)==0 or err("Could not run: $cmd");
+      $copied++;
+    }
+    my $missing = scalar($set->isolates) - $copied;
+    msg("Pre-filled $copied '$file' files ($missing missing)");
+  }
+}
 
 #.............................................................................
 # start the log file
@@ -352,19 +350,19 @@ sub write_makefile {
   print $fh "NAME := $name\n";
   print $fh "GCODE := $gcode\n";
   print $fh "MIN_CTG_LEN := $minctg\n";
-#  print $fh "PUBLISH_DIR := ", $cfg->{publish}, "\n";
+  print $fh "PUBLISH_DIR := ", $cfg->{publish}, "\n";
   print $fh "ASSEMBLER := cpus=\$(CPUS) opts=\"$assembler_opt\" ", $plugin->{assembler}{$assembler}, "\n";
-#  print $fh "MIN_CTG_LEN := cpus=\$(CPUS), " ", " ", $assembler\n";
-#  print $fh "TREEBUILDER := cpus=\$(CPUS) opts=\"$treebuilder_opt\" ", $plugin->{treebuilder}{$treebuilder}, "\n";
+  print $fh "TREEBUILDER := cpus=\$(CPUS) opts=\"$treebuilder_opt\" ", $plugin->{treebuilder}{$treebuilder}, "\n";
   print $fh "TAXONER := cpus=\$(CPUS) opts=\"$taxoner_opt\" ", $plugin->{taxoner}{$taxoner}, "\n";
   print $fh "ANNOTATOR := cpus=\$(CPUS) opts=\"$annotator_opt\" ", $plugin->{annotator}{$annotator}, "\n";
-#  print $fh "NW_DISPLAY := nw_display ".($cfg->{nw_display} || '')."\n";
+  print $fh "NW_DISPLAY := nw_display ".($cfg->{nw_display} || '')."\n";
   print $fh "SNIPPY := snippy --force $snippy_opt\n";
   print $fh "SNIPPYCORE := snippy-core".($mask ? " --mask $mask\n" : "\n");
 #  print $fh "ROARY := roary -v $roary_opt\n";
-  print $fh "ABRICATE := abricate\n";
+#  print $fh "ABRICATE := abricate\n";
   print $fh "MLST := mlst\n";
-#  print $fh "MASH := mash sketch -m 5 -s 10000 -r\n";
+  print $fh "FA := fa --minsize 500 -e -t ../../output/19-1311-0500/contigs.fa > outx\n";
+  print $fh "MASH := mash sketch -m 5 -s 10000 -r\n";
 
   # copy any header stuff from the __DATA__ block at the end of this script
   while (<DATA>) {
@@ -499,6 +497,7 @@ sub check_deps {
 
   msg( colored("All $EXE $VERSION dependencies are installed.", "bold") );
   msg("You deserve a medal!");
+
 }
 
 #-------------------------------------------------------------------
@@ -522,17 +521,17 @@ GFFS := $(addsuffix /contigs.gff,$(ISOLATES))
 SNIPPY_VCFS := $(addsuffix /snps.vcf,$(ISOLATES))
 NAMED_GFFS := $(addsuffix .gff,$(ISOLATES))
 
+
 FASTAREF := ref.fa
 VIRULOME_DB := vfdb
 RESISTOME_DB := ncbi
 PLASMIDOME_DB := plasmidfinder
-
-all : isolates.txt report-isolate/index-fast-isolate.html
+all : isolates.txt report-population/index.html
 
 # ...................................................................................
 
 preview : isolates.txt preview.svg
-  nullarbor-report-fast-isolate.pl --name "PREVIEW__$(NAME)" --indir . --outdir report-isolate --preview
+  nullarbor-report.pl --name "PREVIEW__$(NAME)" --indir . --outdir report --preview
 
 preview.svg : preview.nwk
   $(NW_DISPLAY) $< > $@
@@ -553,30 +552,28 @@ info :
   @echo CPUS: $(CPUS)
   @echo REF: $(REF)
 
-#report/index.html : ref.fa.fai yield denovo.tab mlst.tab core.aln virulome resistome kraken core.svg distances.tab roary/pan.svg roary/acc.svg
-#  nullarbor-report.pl --name $(NAME) --indir . --outdir report
+#cleanup_core : core.%
+#  rm ${core.aln,core.aln.bionj,core.aln.ckp.gz,core.aln.iqtree,core.aln.log,core.aln.mldist,core.full.aln,core.newick,core.ref.fa,core.svg,core.tab,core.txt,core.vcf}
 
-report-isolate/index-fast-isolate.html : ref.fa.fai yield mlst.tab core.aln virulome resistome plasmidome kraken
-  $(BINDIR)/nullarbor-report-fast-isolate.pl --name $(NAME) --indir . --outdir report-isolate-$(ISOLATES)
-  mv report-isolate-$(ISOLATES) $(ISOLATES)
+#cleanup_denovo : denovo.tab
+#  rm ${denovo.tab}
 
-#publish : report-isolate/index-fast-isolate.html
-#  mkdir -p $(PUBLISH_DIR)/$(NAME)
-#  install -p -D -t $(PUBLISH_DIR)/$(NAME) report-isolate/*
+#cleanup_distances: distances.tab
+#  rm ${distances.tab}
+
+cleanup_mlst: mlst.tab
+  rm ${mlst.tab}
+
+report-population/index.html : yield denovo.tab mlst.tab core.aln virulome resistome plasmidome kraken core.svg distances.tab
+  $(BINDIR)/nullarbor-report-fast-population.pl --name $(NAME) --indir . --outdir report
+
+publish : report-population/index.html
+  mkdir -p $(PUBLISH_DIR)/$(NAME)
+  install -p -D -t $(PUBLISH_DIR)/$(NAME) report/*
 
 $(FASTAREF) : $(REF)
   seqret -auto -filter -osformat2 fasta < $< > $@
   touch --reference=$< $@
-
-SNIPPY_VCFS := $(addsuffix /snps.vcf,$(ISOLATES))
-
-%/snps.vcf : $(REF) %/R1.fq.gz %/R2.fq.gz
-  snippy --force --cpus $(CPUS) --outdir $(@D)/snippy --ref $(word 1,$^) --R1 $(word 2,$^) --R2 $(word 3,$^)
-  cp -vf $(@D)/snippy/snps.{tab,aligned.fa,raw.vcf,vcf,bam,bam.bai,log} $(@D)/
-  rm -fr $(@D)/snippy
-
-%/contigs.fa : %/R1.fq.gz %/R2.fq.gz
-  read1="$(word 1,$^)" read2="$(word 2,$^)" outdir="$(@D)" skesa
 
 virulome : $(addsuffix /virulome.tab,$(ISOLATES))
 
@@ -588,18 +585,28 @@ kraken : $(addsuffix /kraken.tab,$(ISOLATES))
 
 yield : $(addsuffix /yield.tab,$(ISOLATES))
 
+SNIPPY_VCFS := $(addsuffix /snps.vcf,$(ISOLATES))
+
+%/contigs.fa : %/R1.fq.gz %/R2.fq.gz
+  touch "$(@D)/contigs.fa"
+
+denovo.tab : $(FASTAREF)
+  ${BINDIR}/fa --minsize $(MIN_CTG_LEN) -e -t $(CONTIGS) > $@
+
 mlst.tab : $(FASTAREF) $(CONTIGS)
   mlst $^ > $@
-  cp mlst.tab $(@D)/$(ISOLATES)
 
-denovo.tab : $(CONTIGS)
- ${BINDIR}/fa --minsize $(MIN_CTG_LEN) -e -t $^ > $@
+distances.tab : core.aln
+  snp-dists -b $< > $@
 
-# distances.tab : core.aln
-#   snp-dists -b $< > $@
+%/snps.vcf : $(REF) %/R1.fq.gz %/R2.fq.gz
+  touch "$(@D)/snps.tab"
+#  $(SNIPPY) --cpus $(CPUS) --outdir $(@D)/snippy --ref "$(word 1,$^)" --R1 "$(word 2,$^)" --R2 "$(word 3,$^)"
+#  cp -vf $(@D)/snippy/snps.{tab,aligned.fa,raw.vcf,vcf,bam,bam.bai,log} $(@D)/
+#  rm -fr $(@D)/snippy
 
-core.aln : $(FASTAREF) $(SNIPPY_VCFS)
-#  $(SNIPPYCORE) --ref $< $(ISOLATES)
+core.aln : $(REF) $(ISOLATES)
+  snippy-core --prefix core --ref $< $(ISOLATES)
 
 %.gff : %/contigs.gff
   ln -f $< $@
@@ -618,36 +625,44 @@ core.aln : $(FASTAREF) $(SNIPPY_VCFS)
 #  $(NW_DISPLAY) $< > $@
 
 %/kraken.tab : %/R1.fq.gz %/R2.fq.gz
-  read1=$(word 1,$^) read2=$(word 2,$^) outfile=$@ $(TAXONER)
+  touch $@
+#  read1="$(word 1,$^)" read2="$(word 2,$^)" outfile="$@" $(TAXONER)
 
-#%/contigs.gff: %/contigs.fa
+%/contigs.gff: %/contigs.fa
+  touch "$(@D)/contigs.gbk"
 #  gffout="$(@)" gbkout="$(@D)/contigs.gbk" contigs="$(<)" locustag="$(@D)" gcode="$(GCODE)" minlen="$(MIN_CTG_LEN)" $(ANNOTATOR)
 
 
-%/yield.tab : %/R1.fq.gz %/R2.fq.gz
-  ${BINDIR}/fq --ref $^ > $@
+%/yield.tab :
+  touch "$(@D)/yield.tab"
 
 %/resistome.tab : %/contigs.fa
-  $(ABRICATE) --db $(RESISTOME_DB) $^ > $@
-
-%/virulome.tab : %/contigs.fa
-  $(ABRICATE) --db $(VIRULOME_DB) $^ > $@
+  touch "$(@D)/resistome.tab"
 
 %/plasmidome.tab : %/contigs.fa
-  $(ABRICATE) --db $(PLASMIDOME_DB) $^ > $@
+  touch "$(@D)/plasmidome.tab"
 
+#  $(ABRICATE) --db $(RESISTOME_DB) $^ > $@
 
-# %/sketch.msh : %/R1.fq.gz %/R2.fq.gz
-#   $(MASH) -o $(basename $@) -I $(@D) -C $< $<
+%/virulome.tab : %/contigs.fa
+  $@
+#  $(ABRICATE) --db $(VIRULOME_DB) $^ > $@
 
-#%.svg : %.newick
-#  $(NW_DISPLAY) $< > $@
+%/sketch.msh : %/R1.fq.gz %/R2.fq.gz
+  $@
+#  $(MASH) -o $(basename $@) -I $(@D) -C $< $<
 
-#%.newick : %.aln
-#  aln="$(<)" tree="$(@)" $(TREEBUILDER)
+%.svg : %.newick
+  nw_display $< > $@
+
+%.newick : %.aln
+ # #iqtree_fast aln="$(<)" tree="$(@)"
+  iqtree -s core.aln -redo -ntmax 10 -nt AUTO -st DNA -fast -m GTR+G4
+  mv "core.aln.treefile" "core.newick"
 
 %.fa.fai : %.fa
-  samtools faidx $<
+  $@
+#  samtools faidx $<
 
 panic : $(BINDIR)/../conf/motd.txt
   @cat $<

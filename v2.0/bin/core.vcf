@@ -1,6 +1,0 @@
-##fileformat=VCFv4.2
-##commandLine="snippy-core --prefix core --ref /tmp/test_files/reference/NC_011294.1.fa"
-##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
-##INFO=<ID=TYPE,Number=A,Type=String,Description="Allele type: snp ins del">
-##contig=<ID=NC_011294.1,len=4685848>
-#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT

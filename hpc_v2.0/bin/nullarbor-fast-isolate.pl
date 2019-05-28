@@ -242,9 +242,11 @@ msg("Will run concurrent $jobs jobs with $threads threads each.");
 
 my %make;
 
-my $IDFILE = 'isolates.txt';
+#my $IDFILE = 'isolates.txt';
+my $IDFILE = "$name.isolates.txt";
 my $R1 = "R1.fq.gz";
 my $R2 = "R2.fq.gz";
+
 
 my @CMDLINE_NO_FORCE = grep !m/^--?f\S*$/, @CMDLINE; # remove --force / -f etc
 $make{'again'} = {
@@ -320,12 +322,13 @@ Nullarbor::Logger->save_log(">>$outdir/$LOGFILE");
 
 #print Dumper(\%make);
 msg("Writing Makefile");
-my $makefile = "$outdir/Makefile";
+#my $makefile = "$outdir/Makefile";
+my $makefile = "$outdir/$name.Makefile";
 open my $make_fh, '>', $makefile or err("Could not write $makefile");
 write_makefile(\%make, $make_fh);
 my $relout = path($outdir)->relative(getcwd())->canonpath;
 my $MAXLOAD = max(1, num_cpus() - $threads);
-my $run_cmd = "nice make -j $jobs -l $MAXLOAD -C $relout 2>&1 | tee -a $relout/$LOGFILE";
+my $run_cmd = "nice make -f $makefile -j $jobs -l $MAXLOAD -C $relout 2>&1 | tee -a $relout/$LOGFILE";
 if ($run) {
   exec($run_cmd) or err("Could not run pipeline's Makefile");
 }
@@ -335,7 +338,6 @@ else {
   msg("Run the full pipeline with:");
   msg( colored("$run_cmd", "bold") );
 }
-
 msg("Done.");
 exit(0);
 
@@ -353,10 +355,10 @@ sub write_makefile {
   print $fh "GCODE := $gcode\n";
   print $fh "MIN_CTG_LEN := $minctg\n";
 #  print $fh "PUBLISH_DIR := ", $cfg->{publish}, "\n";
-  print $fh "ASSEMBLER := cpus=\$(CPUS) opts=\"$assembler_opt\" ", $plugin->{assembler}{$assembler}, "\n";
+  print $fh "ASSEMBLER := cpus=\$(CPUS) opts=\"$assembler_opt\" ", $plugin->{assembler}{skesa}, "\n";
 #  print $fh "MIN_CTG_LEN := cpus=\$(CPUS), " ", " ", $assembler\n";
 #  print $fh "TREEBUILDER := cpus=\$(CPUS) opts=\"$treebuilder_opt\" ", $plugin->{treebuilder}{$treebuilder}, "\n";
-  print $fh "TAXONER := cpus=\$(CPUS) opts=\"$taxoner_opt\" ", $plugin->{taxoner}{$taxoner}, "\n";
+  print $fh "TAXONER := cpus=\$(CPUS) opts=\"$taxoner_opt\" ", $plugin->{taxoner}{kraken}, "\n";
   print $fh "ANNOTATOR := cpus=\$(CPUS) opts=\"$annotator_opt\" ", $plugin->{annotator}{$annotator}, "\n";
 #  print $fh "NW_DISPLAY := nw_display ".($cfg->{nw_display} || '')."\n";
   print $fh "SNIPPY := snippy --force $snippy_opt\n";
@@ -516,7 +518,9 @@ MAKEFLAGS += --no-builtin-variables
 .DEFAULT: all
 .PHONY: all info clean publish
 
-ISOLATES := $(shell cat isolates.txt)
+
+ISOLATES := $(shell cat "$(NAME).isolates.txt")
+#ISOLATES := $(shell cat isolates.txt)
 CONTIGS := $(addsuffix /contigs.fa,$(ISOLATES))
 GFFS := $(addsuffix /contigs.gff,$(ISOLATES))
 SNIPPY_VCFS := $(addsuffix /snps.vcf,$(ISOLATES))
@@ -527,25 +531,26 @@ VIRULOME_DB := vfdb
 RESISTOME_DB := ncbi
 PLASMIDOME_DB := plasmidfinder
 
-all : isolates.txt report-isolate/index-fast-isolate.html
+#all : isolates.txt report-isolate/index-fast-isolate.html
+all : $(IDFILE) report-isolate/index-fast-isolate.html
 
 # ...................................................................................
 
-preview : isolates.txt preview.svg
-  nullarbor-report-fast-isolate.pl --name "PREVIEW__$(NAME)" --indir . --outdir report-isolate --preview
-
-preview.svg : preview.nwk
-  $(NW_DISPLAY) $< > $@
-
-preview.nwk : preview.mat
-  quicktree -in m -out t $< | nw_order -c n - > $@
-
-preview.mat : preview.msh
-  cat isolates.txt | wc -l > $@
-  mash dist -p $(CPUS) -t $< $< | grep -v '^#' | sed 's/\/R1.fq.gz//' >> $@
-
-preview.msh : $(addsuffix /sketch.msh,$(ISOLATES))
-  mash paste $(basename $@) $^
+# preview : "isolates.txt" preview.svg
+#   nullarbor-report-fast-isolate.pl --name "PREVIEW__$(NAME)" --indir . --outdir report-isolate --preview
+#
+# preview.svg : preview.nwk
+#   $(NW_DISPLAY) $< > $@
+#
+# preview.nwk : preview.mat
+#   quicktree -in m -out t $< | nw_order -c n - > $@
+#
+# preview.mat : preview.msh
+#   cat "$name.isolates.txt" | wc -l > $@
+#   mash dist -p $(CPUS) -t $< $< | grep -v '^#' | sed 's/\/R1.fq.gz//' >> $@
+#
+# preview.msh : $(addsuffix /sketch.msh,$(ISOLATES))
+#   mash paste $(basename $@) $^
 
 # ...................................................................................
 
@@ -553,16 +558,17 @@ info :
   @echo CPUS: $(CPUS)
   @echo REF: $(REF)
 
-#report/index.html : ref.fa.fai yield denovo.tab mlst.tab core.aln virulome resistome kraken core.svg distances.tab roary/pan.svg roary/acc.svg
+#report/index.html : ref.fa.fai yield denovo.tab mlst.tab core virulome resistome kraken core.svg distances.tab roary/pan.svg roary/acc.svg
 #  nullarbor-report.pl --name $(NAME) --indir . --outdir report
 
-report-isolate/index-fast-isolate.html : ref.fa.fai yield mlst.tab core.aln virulome resistome plasmidome kraken
-  $(BINDIR)/nullarbor-report-fast-isolate.pl --name $(NAME) --indir . --outdir report-isolate-$(ISOLATES)
-  mv report-isolate-$(ISOLATES) $(ISOLATES)
+report-isolate/index-fast-isolate.html : ref.fa.fai yield core mlst virulome resistome plasmidome kraken
+  $(BINDIR)/nullarbor-report-fast-isolate.pl --name $(NAME) --indir . --outdir $(ISOLATES)/report-isolate --samplename $(ISOLATES)
+ # mv report-isolate $(@D)/$(ISOLATES)
 
 #publish : report-isolate/index-fast-isolate.html
 #  mkdir -p $(PUBLISH_DIR)/$(NAME)
 #  install -p -D -t $(PUBLISH_DIR)/$(NAME) report-isolate/*
+
 
 $(FASTAREF) : $(REF)
   seqret -auto -filter -osformat2 fasta < $< > $@
@@ -576,7 +582,7 @@ SNIPPY_VCFS := $(addsuffix /snps.vcf,$(ISOLATES))
   rm -fr $(@D)/snippy
 
 %/contigs.fa : %/R1.fq.gz %/R2.fq.gz
-  read1="$(word 1,$^)" read2="$(word 2,$^)" outdir="$(@D)" skesa
+  skesa --fastq "$(word 1,$^)" --fastq "$(word 2,$^)" --use_paired_ends --vector_percent 1.0 --contigs_out "$(@D)"/contigs.fa
 
 virulome : $(addsuffix /virulome.tab,$(ISOLATES))
 
@@ -588,18 +594,26 @@ kraken : $(addsuffix /kraken.tab,$(ISOLATES))
 
 yield : $(addsuffix /yield.tab,$(ISOLATES))
 
-mlst.tab : $(FASTAREF) $(CONTIGS)
-  mlst $^ > $@
-  cp mlst.tab $(@D)/$(ISOLATES)
+mlst : $(addsuffix /mlst.tab,$(ISOLATES))
 
-denovo.tab : $(CONTIGS)
- ${BINDIR}/fa --minsize $(MIN_CTG_LEN) -e -t $^ > $@
+denovo : $(addsuffix /denovo.tab,$(ISOLATES))
+
+core : $(addsuffix /core.aln,$(ISOLATES))
+
+%/mlst.tab : $(FASTAREF) $(CONTIGS)
+  mlst $^ > $@
+#  cp mlst.tab $(@D)/$(ISOLATES)
+
+%/denovo.tab : $(CONTIGS)
+ ${BINDIR}/fa --minsize 500 -e -t $^ > $@
+
+%/core.aln : $(REF) $(SNIPPY_VCFS)
+ # touch "$(@D)/core.aln"
+  rm -f $(@D)/core.aln
+  #$(SNIPPYCORE) --ref $< $(ISOLATES)
 
 # distances.tab : core.aln
 #   snp-dists -b $< > $@
-
-core.aln : $(FASTAREF) $(SNIPPY_VCFS)
-#  $(SNIPPYCORE) --ref $< $(ISOLATES)
 
 %.gff : %/contigs.gff
   ln -f $< $@
@@ -618,11 +632,11 @@ core.aln : $(FASTAREF) $(SNIPPY_VCFS)
 #  $(NW_DISPLAY) $< > $@
 
 %/kraken.tab : %/R1.fq.gz %/R2.fq.gz
-  read1=$(word 1,$^) read2=$(word 2,$^) outfile=$@ $(TAXONER)
+  kraken --threads 4 --paired "$(word 1,$^)" "$(word 2,$^)" | kraken-report > $@
+#  read1=$(word 1,$^) read2=$(word 2,$^) outfile=$@
 
 #%/contigs.gff: %/contigs.fa
 #  gffout="$(@)" gbkout="$(@D)/contigs.gbk" contigs="$(<)" locustag="$(@D)" gcode="$(GCODE)" minlen="$(MIN_CTG_LEN)" $(ANNOTATOR)
-
 
 %/yield.tab : %/R1.fq.gz %/R2.fq.gz
   ${BINDIR}/fq --ref $^ > $@
@@ -635,7 +649,6 @@ core.aln : $(FASTAREF) $(SNIPPY_VCFS)
 
 %/plasmidome.tab : %/contigs.fa
   $(ABRICATE) --db $(PLASMIDOME_DB) $^ > $@
-
 
 # %/sketch.msh : %/R1.fq.gz %/R2.fq.gz
 #   $(MASH) -o $(basename $@) -I $(@D) -C $< $<
@@ -655,5 +668,8 @@ panic : $(BINDIR)/../conf/motd.txt
 help : $(BINDIR)/../conf/make_help.txt
   @cat $<
 
-list : isolates.txt
+#list : "isolates.txt"
+#  @nl $<
+
+list : $(IDFILE)
   @nl $<

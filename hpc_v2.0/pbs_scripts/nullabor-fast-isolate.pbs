@@ -1,9 +1,10 @@
 #!/bin/bash
 
+#PBS -P STM_LM_NGS
 #PBS -l select=1:ncpus=4:mem=16GB
 #PBS -l walltime=1:00:00
-#PBS -q alloc-zz
-#PBS -J 1-10
+#PBS -q small-express
+#PBS -J 1-26
 
 
 ################################################################################################
@@ -21,29 +22,25 @@
 # cpus, and then gathered for execution once these analyses are complete.
 # Please be forgiving - this is not an elegant, true parallel solution but an ugly hack.
 
-module load nullarbor/1.3-dev
+module load nullarbor/2.0
 
 CPU=4
 
 export KRAKEN_DEFAULT_DB='/project/data/kraken/minikraken_20141208'
 
-wkdir="/scratch/TRG_STM/mailie/nullarbor-dev"
+wkdir="/scratch/RDS-FSC-TRG_STM_Val-RW/nullarbor-fast/"
 
 cd $wkdir
 
-input="test_files/fastq/inputfile.tsv"
-outputdir="test_files/output/test-1"
-reference="test_files/reference/ref.fa"
-project_name="isolate"
-file=$input
+input="/scratch/RDS-FSC-TRG_STM_Val-RW/nullarbor-fast/inputlist.tsv"
+outputdir="/scratch/RDS-FSC-TRG_STM_Val-RW/nullarbor-fast/output/"
+reference="/scratch/RDS-FSC-TRG_STM_Val-RW/Mailie_GBS/CP010867.fa"
+project_name="RR-project"
 
-NULLABOR_HOME="/scratch/TRG_STM/mailie/programs/nullarbor/v13"
+NULLABOR_HOME="/scratch/RDS-FSC-TRG_STM_Val-RW/nullarbor-fast/v2.0/bin"
 
-sed -n ${PBS_ARRAY_INDEX}p $input > ${outputdir}/input.${PBS_ARRAY_INDEX}.tsv
+#sed -n ${PBS_ARRAY_INDEX}p $input > ${outputdir}/input.${PBS_ARRAY_INDEX}.tsv
 
 echo [$(date +"%m/%d/%y  %H:%M:%S")] Nullarbor fast isolate ${PBS_ARRAY_INDEX} analyses started
 
-perl ${NULLABOR_HOME}/nullarbor-fast-isolate.pl --name $project_name.${PBS_ARRAY_INDEX} --input ${outputdir}/input.${PBS_ARRAY_INDEX}.tsv --outdir $outputdir --ref $reference --cpus $CPU --accurate --force --run;
-
-mkdir $outputdir/isolate.${PBS_ARRAY_INDEX}
-find . -maxdepth 1 -type f -exec mv {} $outputdir/isolate.${PBS_ARRAY_INDEX} \;
+perl ${NULLABOR_HOME}/nullarbor-fast-isolate.pl --name $project_name.${PBS_ARRAY_INDEX} --input /scratch/RDS-FSC-TRG_STM_Val-RW/nullarbor-fast/input.${PBS_ARRAY_INDEX}.tsv --outdir $outputdir --ref $reference --cpus $CPU --force --run;
