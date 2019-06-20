@@ -1,7 +1,7 @@
 # ignore a single file
 
 # ignore an entire directory
-/test_files/*
+/v2.0-amr/*
 
 # ignore a file type
 .DS_Store

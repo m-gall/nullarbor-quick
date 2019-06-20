@@ -576,7 +576,7 @@ SNIPPY_VCFS := $(addsuffix /snps.vcf,$(ISOLATES))
   rm -fr $(@D)/snippy
 
 %/contigs.fa : %/R1.fq.gz %/R2.fq.gz
-  read1="$(word 1,$^)" read2="$(word 2,$^)" outdir="$(@D)" skesa
+  read1="$(word 1,$^)" read2="$(word 2,$^)" outdir="$(@D)" $(ASSEMBLER)
 
 virulome : $(addsuffix /virulome.tab,$(ISOLATES))
 

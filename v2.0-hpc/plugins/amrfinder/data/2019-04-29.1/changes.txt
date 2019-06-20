@@ -1,0 +1,1153 @@
+---------------------------------------------------------------------
+Changes included in 2019-04-29.1
+---------------------------------------------------------------------
+
+Summary: In addition to the usual addition of 134 new genes and alleles
+community feedback led to the renaming of a few dfr genes.  The family
+heirarchy file (fam.tab) was cleaned up by removing a number of superfluous
+entries.
+
+Changes included in 2019-04-29.1
+- Protein changes:
+      Prev. Release:  4810
+       This Release:  4942
+            Removed:     1
+              Added:   134
+           Modified:     3
+        Protein Removed:  WP_109545040.1  chrB                
+          Protein Added:  WP_000054744.1  satA_Ba             
+          Protein Added:  WP_001211209.1  blaADC-140          
+          Protein Added:  WP_001211210.1  blaADC-185          
+          Protein Added:  WP_001211214.1  blaADC-144          
+          Protein Added:  WP_001211215.1  blaADC-115          
+          Protein Added:  WP_001572373.1  mcr-9.1             
+          Protein Added:  WP_002126587.1  blaADC-120          
+          Protein Added:  WP_002157727.1  blaADC-117          
+          Protein Added:  WP_003112187.1  blaADC-191          
+          Protein Added:  WP_003242546.1  satA_Bs             
+          Protein Added:  WP_004643536.1  blaADC-128          
+          Protein Added:  WP_004700205.1  blaADC-133          
+          Protein Added:  WP_004707701.1  blaADC-131          
+          Protein Added:  WP_004712857.1  blaADC-119          
+          Protein Added:  WP_004790939.1  blaADC-135          
+          Protein Added:  WP_004840559.1  blaADC-123          
+          Protein Added:  WP_004886093.1  blaADC-130          
+          Protein Added:  WP_005039111.1  blaADC-129          
+          Protein Added:  WP_005046018.1  blaADC-127          
+          Protein Added:  WP_005068074.1  blaADC-132          
+          Protein Added:  WP_005109685.1  blaADC-121          
+          Protein Added:  WP_005123276.1  blaADC-122          
+          Protein Added:  WP_005131186.1  blaADC-125          
+          Protein Added:  WP_005307218.1  blaADC-134          
+          Protein Added:  WP_005404206.1  blaOXA-813          
+          Protein Added:  WP_005405613.1  blaOXA-814          
+          Protein Added:  WP_013197184.1  blaADC-193          
+          Protein Added:  WP_014207272.1  blaADC-149          
+          Protein Added:  WP_016137488.1  blaADC-136          
+          Protein Added:  WP_016140427.1  blaADC-137          
+          Protein Added:  WP_016146025.1  blaADC-138          
+          Protein Added:  WP_017386568.1  blaADC-150          
+          Protein Added:  WP_017778762.1  mcr-3.27            
+          Protein Added:  WP_017816757.1  blaADC-116          
+          Protein Added:  WP_026382828.1  blaOXA-114i         
+          Protein Added:  WP_026444036.1  blaOXA-816          
+          Protein Added:  WP_032039838.1  blaADC-139          
+          Protein Added:  WP_032053762.1  blaOXA-819          
+          Protein Added:  WP_032057042.1  blaOXA-820          
+          Protein Added:  WP_032062810.1  blaADC-141          
+          Protein Added:  WP_032625176.1  blaACT-66           
+          Protein Added:  WP_033502167.1  blaADC-143          
+          Protein Added:  WP_034670108.1  blaOXA-818          
+          Protein Added:  WP_034688190.1  blaOXA-812          
+          Protein Added:  WP_036299413.1  sulR                
+          Protein Added:  WP_039246976.1  blaADC-148          
+          Protein Added:  WP_039258389.1  blaADC-146          
+          Protein Added:  WP_039270258.1  blaADC-145          
+          Protein Added:  WP_044718369.1  blaADC-147          
+          Protein Added:  WP_047726486.1  blaACT-65           
+          Protein Added:  WP_053498400.1  blaOXA-114h         
+          Protein Added:  WP_054437016.1  blaOXA-114j         
+          Protein Added:  WP_054471662.1  blaOXA-114m         
+          Protein Added:  WP_054500785.1  blaOXA-789          
+          Protein Added:  WP_054517040.1  blaOXA-114l         
+          Protein Added:  WP_057061999.1  blaOXA-821          
+          Protein Added:  WP_059247009.1  blaADC-184          
+          Protein Added:  WP_063099318.1  blaADC-151          
+          Protein Added:  WP_063147148.1  blaACT-67           
+          Protein Added:  WP_072292271.1  blaADC-186          
+          Protein Added:  WP_075040046.1  blaOXA-817          
+          Protein Added:  WP_076412384.1  blaOXA-114p         
+          Protein Added:  WP_099595307.1  dfrA35              
+          Protein Added:  WP_103663397.1  sulX                
+          Protein Added:  WP_106743337.1  mcr-1.18            
+          Protein Added:  WP_109545052.1  mcr-1.14            
+          Protein Added:  WP_110612827.1  blaOXA-796          
+          Protein Added:  WP_111280830.1  blaOXA-815          
+          Protein Added:  WP_115470049.1  blaKPC-40           
+          Protein Added:  WP_117664257.1  cfxA6               
+          Protein Added:  WP_125052776.1  blaADC-114          
+          Protein Added:  WP_136512051.1  blaACT-68           
+          Protein Added:  WP_136512052.1  blaADC-109          
+          Protein Added:  WP_136512053.1  blaADC-110          
+          Protein Added:  WP_136512054.1  blaADC-112          
+          Protein Added:  WP_136512055.1  blaADC-113          
+          Protein Added:  WP_136512056.1  blaADC-187          
+          Protein Added:  WP_136512057.1  blaADC-188          
+          Protein Added:  WP_136512058.1  blaADC-189          
+          Protein Added:  WP_136512059.1  blaADC-190          
+          Protein Added:  WP_136512060.1  blaADC-192          
+          Protein Added:  WP_136512061.1  blaADC-24           
+          Protein Added:  WP_136512062.1  blaADC-65           
+          Protein Added:  WP_136512063.1  blaADC-66           
+          Protein Added:  WP_136512064.1  blaCTX-M-225        
+          Protein Added:  WP_136512065.1  blaCTX-M-226        
+          Protein Added:  WP_136512066.1  blaFRI-7            
+          Protein Added:  WP_136512067.1  blaIMI-18           
+          Protein Added:  WP_136512068.1  blaIMP-39           
+          Protein Added:  WP_136512069.1  blaIMP-46           
+          Protein Added:  WP_136512070.1  blaKPC-42           
+          Protein Added:  WP_136512071.1  blaKPC-43           
+          Protein Added:  WP_136512072.1  blaNDM-28           
+          Protein Added:  WP_136512073.1  blaOXA-114k         
+          Protein Added:  WP_136512074.1  blaOXA-114n         
+          Protein Added:  WP_136512075.1  blaOXA-114q         
+          Protein Added:  WP_136512076.1  blaOXA-114r         
+          Protein Added:  WP_136512077.1  blaOXA-114s         
+          Protein Added:  WP_136512078.1  blaOXA-114t         
+          Protein Added:  WP_136512079.1  blaOXA-114u         
+          Protein Added:  WP_136512080.1  blaOXA-114v         
+          Protein Added:  WP_136512081.1  blaOXA-114w         
+          Protein Added:  WP_136512082.1  blaOXA-114x         
+          Protein Added:  WP_136512083.1  blaOXA-787          
+          Protein Added:  WP_136512084.1  blaOXA-788          
+          Protein Added:  WP_136512085.1  blaOXA-793          
+          Protein Added:  WP_136512086.1  blaOXA-794          
+          Protein Added:  WP_136512087.1  blaOXA-795          
+          Protein Added:  WP_136512088.1  blaOXA-797          
+          Protein Added:  WP_136512089.1  blaOXA-798          
+          Protein Added:  WP_136512090.1  blaOXA-799          
+          Protein Added:  WP_136512091.1  blaOXA-800          
+          Protein Added:  WP_136512092.1  blaOXA-801          
+          Protein Added:  WP_136512093.1  blaOXA-802          
+          Protein Added:  WP_136512094.1  blaOXA-803          
+          Protein Added:  WP_136512095.1  blaOXA-804          
+          Protein Added:  WP_136512096.1  blaOXA-805          
+          Protein Added:  WP_136512097.1  blaOXA-806          
+          Protein Added:  WP_136512098.1  blaOXA-807          
+          Protein Added:  WP_136512099.1  blaOXA-808          
+          Protein Added:  WP_136512100.1  blaOXA-809          
+          Protein Added:  WP_136512101.1  blaOXA-810          
+          Protein Added:  WP_136512102.1  blaOXA-811          
+          Protein Added:  WP_136512103.1  blaOXA-823          
+          Protein Added:  WP_136512104.1  blaOXA-824          
+          Protein Added:  WP_136512105.1  blaPER-13           
+          Protein Added:  WP_136512106.1  blaVIM-48           
+          Protein Added:  WP_136512107.1  blaVIM-55           
+          Protein Added:  WP_136512108.1  blaVIM-63           
+          Protein Added:  WP_136512109.1  blaVIM-66           
+          Protein Added:  WP_136512110.1  mcr-1.16            
+          Protein Added:  WP_136512111.1  mcr-1.17            
+          Protein Added:  WP_136512112.1  mcr-3.29            
+       Protein Modified:  WP_001031075.1 dfr18 updated to WP_001031075.1 dfrA18
+       Protein Modified:  WP_032490189.1 dfrA18 updated to WP_032490189.1 dfrA19
+       Protein Modified:  WP_063843245.1 chrB updated to WP_063843245.1 chrB_rRNA_meth
+- AMR HMM library Changes:
+      Prev. Release:   571
+       This Release:   574
+            Removed:     0
+              Added:     3
+            Changed:   571
+              HMM Added:  NF033818.0      blaOXA-114_like     
+              HMM Added:  NF033836.1      polymyxin_MCR9      
+              HMM Added:  NF033851.1      trim_DfrA35         
+           HMM Modified:  NF000039.1 trim_Dfr18 renamed to NF000039.1 trim_DfrA18
+           HMM Modified:  NF000041.1 trim_DfrA18_A19 renamed to NF000041.1 trim_DfrA19
+           HMM Modified:  NF000422.2 blaPDC updated to NF000422.6 blaPDC
+- Protein family changes:
+      Prev. Release:  1177
+       This Release:  1119
+            Removed:    68
+              Added:    10
+           Modified:     4
+         Family Removed:  -               PORIN               
+         Family Removed:  -               aac(1)              
+         Family Removed:  -               aac(3')-IIe         
+         Family Removed:  -               aac(3)-Ie           
+         Family Removed:  -               aac(3)-VI           
+         Family Removed:  -               aac(3)-Vb           
+         Family Removed:  -               aac(6')-Ib8         
+         Family Removed:  -               aacA44              
+         Family Removed:  -               aadA1bt             
+         Family Removed:  -               aadA1r              
+         Family Removed:  -               aadA24              
+         Family Removed:  -               ampC_Eae            
+         Family Removed:  -               ampH                
+         Family Removed:  -               ampS                
+         Family Removed:  -               ant(3'')(9)         
+         Family Removed:  -               ant(3'')-Ii         
+         Family Removed:  -               aph(3')-Ic          
+         Family Removed:  -               arr-Cb              
+         Family Removed:  -               blaCMG              
+         Family Removed:  -               blaKLUG             
+         Family Removed:  -               blaLMB              
+         Family Removed:  -               blaMSI-OXA          
+         Family Removed:  -               blaOXA_missing      
+         Family Removed:  -               blaPNGM             
+         Family Removed:  -               blaZEG              
+         Family Removed:  -               blmS                
+         Family Removed:  -               catA12              
+         Family Removed:  -               ccrA                
+         Family Removed:  NF000488.1      chrB                
+         Family Removed:  -               cml                 
+         Family Removed:  -               cmlA7               
+         Family Removed:  -               cmlA9               
+         Family Removed:  NF000039.1      dfr18               
+         Family Removed:  NF000041.1      dfrA18_dfrA19       
+         Family Removed:  -               dfrA1_var           
+         Family Removed:  -               dfrA29              
+         Family Removed:  -               dfrA33              
+         Family Removed:  -               dfrB7               
+         Family Removed:  -               flo                 
+         Family Removed:  -               mef(E)              
+         Family Removed:  -               mef(G)              
+         Family Removed:  -               mef(I)              
+         Family Removed:  -               mph(D)              
+         Family Removed:  -               nimF                
+         Family Removed:  -               nimH                
+         Family Removed:  -               omp35               
+         Family Removed:  -               ompE35              
+         Family Removed:  -               otr(C)              
+         Family Removed:  -               penA                
+         Family Removed:  -               sat2A               
+         Family Removed:  -               sat3A               
+         Family Removed:  -               spc                 
+         Family Removed:  -               sul1delta           
+         Family Removed:  -               vanH-Ac2            
+         Family Removed:  -               vanH-F              
+         Family Removed:  -               vanR-Pt             
+         Family Removed:  -               vanR-Pt2            
+         Family Removed:  -               vanS-I              
+         Family Removed:  -               vanSc               
+         Family Removed:  -               vanTc4              
+         Family Removed:  -               vanX-Ac2            
+         Family Removed:  -               vanX-F              
+         Family Removed:  -               vanX-Pt2            
+         Family Removed:  -               vanY-40021673       
+         Family Removed:  -               vanY-D4             
+         Family Removed:  -               vanY-D5             
+         Family Removed:  -               vanY-M              
+         Family Removed:  -               vanY-Pt2            
+           Family Added:  NF033818.0      blaOXA-114_like     
+           Family Added:  NF033851.1      dfrA35              
+           Family Added:  NF033124.1      estX                
+           Family Added:  NF033836.1      mcr-9               
+           Family Added:  -               satA_Bs             
+           Family Added:  -               sulR                
+           Family Added:  -               sulX                
+         Family Changed:  NF000422.2 blaPDC updated to NF000422.6 blaPDC
+         Family Changed:  NF000488.1 chrB renamed to chrB_rRNA_meth
+         Family Changed:  NF000039.1 dfr18 renamed to dfrA18
+         Family Changed:  NF000041.1 dfrA18_dfrA19 renamed to dfrA19
+---------------------------------------------------------------------
+Changes included in 2019-02-08.1
+---------------------------------------------------------------------
+
+Two incorrectly assigned proteins were accidentally released. They are not
+AMR proteins and should not have been released. This release simply removes
+them and is otherwise unchanged.
+
+- Protein changes:
+      Prev. Release:  4812
+       This Release:  4810
+            Removed:     2
+              Added:     0
+            Changed:  4810
+        Protein Removed:  WP_000122253.1  sat                 
+        Protein Removed:  WP_001045652.1  sat                 
+---------------------------------------------------------------------
+Changes included in 2019-02-04.1
+---------------------------------------------------------------------
+- Protein name changes:
+    "inhibitor-resistant" was added to the names of: 
+    blaKPC-8 
+    blaKPC-30
+    blaKPC-31
+    blaKPC-32
+    blaKPC-33
+- Protein changes:
+      Prev. Release:  4730
+       This Release:  4812
+            Removed:     0
+              Added:    82
+       Protein modified:  WP_063855700.1  tet(35) replaced with WP_005480402.1
+          Protein Added:  WP_000122253.1  sat                 
+          Protein Added:  WP_001045652.1  sat                 
+          Protein Added:  WP_002415638.1  poxtA               
+          Protein Added:  WP_003234144.1  vmlR                
+          Protein Added:  WP_029728367.1  blaB                
+          Protein Added:  WP_044103626.1  blaVEB-21           
+          Protein Added:  WP_046693238.1  blaADC-181          
+          Protein Added:  WP_049637206.1  blaOXA-780          
+          Protein Added:  WP_057691114.1  blaADC-182          
+          Protein Added:  WP_058492019.1  vanI                
+          Protein Added:  WP_065980086.1  blaOXA-784          
+          Protein Added:  WP_069953510.1  blaAFM-1            
+          Protein Added:  WP_069996660.1  mecC3               
+          Protein Added:  WP_071223118.1  taeA                
+          Protein Added:  WP_087343787.1  ant(6)-Ic           
+          Protein Added:  WP_087344360.1  blaBBI              
+          Protein Added:  WP_087344902.1  catV                
+          Protein Added:  WP_087346196.1  ant(4')-Ic          
+          Protein Added:  WP_087347987.1  rphC                
+          Protein Added:  WP_087348261.1  rphD                
+          Protein Added:  WP_087349244.1  mphJ                
+          Protein Added:  WP_087349651.1  aac(6')-35          
+          Protein Added:  WP_114225343.1  blaOXA-739          
+          Protein Added:  WP_123002100.1  blaGES-40           
+          Protein Added:  WP_123002101.1  blaKPC-38           
+          Protein Added:  WP_123002102.1  blaNDM-27           
+          Protein Added:  WP_123002103.1  blaVIM-61           
+          Protein Added:  WP_126205827.1  blaOXA-785          
+          Protein Added:  WP_127728991.1  blaFRI-6            
+          Protein Added:  WP_128268231.1  mecC2               
+          Protein Added:  WP_128268232.1  blaADC-183          
+          Protein Added:  WP_128268233.1  blaCARB-50          
+          Protein Added:  WP_128268234.1  blaCFE-2            
+          Protein Added:  WP_128268235.1  blaCTX-M-215        
+          Protein Added:  WP_128268236.1  blaDHA-28           
+          Protein Added:  WP_128268237.1  blaKPC-39           
+          Protein Added:  WP_128268238.1  blaOXA-738          
+          Protein Added:  WP_128268239.1  blaOXA-740          
+          Protein Added:  WP_128268240.1  blaOXA-741          
+          Protein Added:  WP_128268241.1  blaOXA-742          
+          Protein Added:  WP_128268242.1  blaOXA-743          
+          Protein Added:  WP_128268243.1  blaOXA-744          
+          Protein Added:  WP_128268244.1  blaOXA-745          
+          Protein Added:  WP_128268245.1  blaOXA-746          
+          Protein Added:  WP_128268246.1  blaOXA-747          
+          Protein Added:  WP_128268247.1  blaOXA-748          
+          Protein Added:  WP_128268248.1  blaOXA-749          
+          Protein Added:  WP_128268249.1  blaOXA-750          
+          Protein Added:  WP_128268250.1  blaOXA-751          
+          Protein Added:  WP_128268251.1  blaOXA-752          
+          Protein Added:  WP_128268252.1  blaOXA-753          
+          Protein Added:  WP_128268253.1  blaOXA-754          
+          Protein Added:  WP_128268254.1  blaOXA-755          
+          Protein Added:  WP_128268255.1  blaOXA-756          
+          Protein Added:  WP_128268256.1  blaOXA-757          
+          Protein Added:  WP_128268257.1  blaOXA-758          
+          Protein Added:  WP_128268258.1  blaOXA-759          
+          Protein Added:  WP_128268259.1  blaOXA-760          
+          Protein Added:  WP_128268260.1  blaOXA-761          
+          Protein Added:  WP_128268261.1  blaOXA-762          
+          Protein Added:  WP_128268262.1  blaOXA-763          
+          Protein Added:  WP_128268263.1  blaOXA-764          
+          Protein Added:  WP_128268264.1  blaOXA-765          
+          Protein Added:  WP_128268265.1  blaOXA-766          
+          Protein Added:  WP_128268266.1  blaOXA-767          
+          Protein Added:  WP_128268267.1  blaOXA-768          
+          Protein Added:  WP_128268268.1  blaOXA-769          
+          Protein Added:  WP_128268269.1  blaOXA-770          
+          Protein Added:  WP_128268270.1  blaOXA-771          
+          Protein Added:  WP_128268271.1  blaOXA-772          
+          Protein Added:  WP_128268272.1  blaOXA-773          
+          Protein Added:  WP_128268273.1  blaOXA-774          
+          Protein Added:  WP_128268274.1  blaOXA-775          
+          Protein Added:  WP_128268275.1  blaOXA-776          
+          Protein Added:  WP_128268276.1  blaOXA-781          
+          Protein Added:  WP_128268277.1  blaOXA-782          
+          Protein Added:  WP_128268278.1  blaOXA-783          
+          Protein Added:  WP_128268279.1  blaOXA-786          
+          Protein Added:  WP_128268280.1  blaPDC-317          
+          Protein Added:  WP_128268286.1  blaVEB-20           
+          Protein Added:  WP_128268287.1  blaVIM-62           
+          Protein Added:  WP_128268288.1  qnrS15              
+- AMR HMM library Changes:
+      Prev. Release:   568
+       This Release:   571
+            Removed:     0
+              Added:     3
+              HMM Added:  NF033714.1      blaBBI              
+              HMM Added:  NF033736.1      blaAFM              
+              HMM Added:  NF033815.0      blaOXA-364_like     
+           HMM Modified:  NF000355.2 ribo_prot_ABC_F updated to NF000355.3 ribo_prot_ABC_F
+- Protein family changes:
+      Prev. Release:  1161
+       This Release:  1177
+            Removed:     0
+              Added:    16
+           Family Added:  -               aac(6')-35          
+           Family Added:  -               ant(4')-Ic          
+           Family Added:  -               ant(6)-Ic           
+           Family Added:  NF033736.1      blaAFM              
+           Family Added:  NF033714.1      blaBBI              
+           Family Added:  NF033815.0      blaOXA-364_like     
+           Family Added:  -               mecC2               
+           Family Added:  -               mecC3               
+           Family Added:  -               mphJ                
+           Family Added:  -               poxtA               
+           Family Added:  -               rphC                
+           Family Added:  -               rphD                
+           Family Added:  -               rph_gen             
+           Family Added:  -               satA_Ba             
+           Family Added:  -               taeA                
+           Family Added:  -               vmlR                
+         Family Changed:  NF000355.2 abc-f updated to NF000355.3 abc-f
+
+---------------------------------------------------------------------
+Changes included in 2018-11-07.1
+---------------------------------------------------------------------
+
+Due to a communication error three blaOXA alleles in the AMR database have
+been reassigned. Alleles published by Tian, et al. (PMID:30247543) have
+replaced them.
+
+AFY12006.1 JX846494.1 WP_072678505.1 NG_061615.1 were blaOXA-669, now they are blaOXA-732
+AAL47570.1 AY066004.1 WP_114699266.1 NG_061383.1 were blaOXA-666, now they are blaOXA-729
+AXH06203.1 MH684781.1 WP_116786836.1 NG_061623.1 were blaOXA-667, now they are blaOXA-730
+
+- Protein changes:
+      Prev. Release:  4579
+       This Release:  4730
+            Removed:     0
+              Added:   151
+          Protein Added:  WP_004143591.1  blaSHV-206          
+          Protein Added:  WP_004384957.1  blaCSA-2            
+          Protein Added:  WP_007888761.1  blaCSA-1            
+          Protein Added:  WP_011245929.1  clbB                
+          Protein Added:  WP_011707905.1  blaOXA-725          
+          Protein Added:  WP_012116915.1  clbA                
+          Protein Added:  WP_015892743.1  clbC                
+          Protein Added:  WP_016162389.1  blaOXA-673          
+          Protein Added:  WP_016168805.1  blaOXA-664          
+          Protein Added:  WP_016651348.1  blaOXA-670          
+          Protein Added:  WP_016657654.1  blaOXA-665          
+          Protein Added:  WP_016660101.1  blaOXA-671          
+          Protein Added:  WP_016685888.1  blaOXA-715          
+          Protein Added:  WP_017822040.1  qnrVC10             
+          Protein Added:  WP_023271137.1  blaOXA-672          
+          Protein Added:  WP_023341517.1  blaSHV-211          
+          Protein Added:  WP_031998610.1  blaOXA-716          
+          Protein Added:  WP_032018141.1  blaOXA-717          
+          Protein Added:  WP_032495491.1  blaKLUC-3           
+          Protein Added:  WP_032495492.1  blaKLUC-4           
+          Protein Added:  WP_032974004.1  blaCMA-1            
+          Protein Added:  WP_033179079.1  crpP                
+          Protein Added:  WP_034612711.1  blaOXA-668          
+          Protein Added:  WP_056517622.1  blaOXA-669          
+          Protein Added:  WP_057097547.1  aph(2'')-If2        
+          Protein Added:  WP_058652112.1  dfrA34              
+          Protein Added:  WP_064733493.1  blaSHV-207          
+          Protein Added:  WP_064760451.1  qepA4               
+          Protein Added:  WP_064768701.1  qepA7               
+          Protein Added:  WP_077096319.1  blaOXA-724          
+          Protein Added:  WP_081406929.1  blaOXA-674          
+          Protein Added:  WP_081853183.1  blaELM-1            
+          Protein Added:  WP_092689909.1  blaOXA-666          
+          Protein Added:  WP_094166899.1  blaCTX-M-224        
+          Protein Added:  WP_096735335.1  blaOXA-667          
+          Protein Added:  WP_096941464.1  qepA6               
+          Protein Added:  WP_100663667.1  blaKLUC-5           
+          Protein Added:  WP_101150415.1  blaOXA-726          
+          Protein Added:  WP_104159136.1  blaSHV-224          
+          Protein Added:  WP_105620838.1  blaCMA-2            
+          Protein Added:  WP_109232473.1  blaSHV-220          
+          Protein Added:  WP_109638756.1  qepA8               
+          Protein Added:  WP_112021705.1  qepA9               
+          Protein Added:  WP_113334341.1  qepA10              
+          Protein Added:  WP_115196748.1  blaSHV-210          
+          Protein Added:  WP_117241614.1  blaSHV-223          
+          Protein Added:  WP_122630822.1  blaEFM-1            
+          Protein Added:  WP_122630823.1  blaEVM-1            
+          Protein Added:  WP_122630824.1  blaECM-1            
+          Protein Added:  WP_122630825.1  blaEAM-1            
+          Protein Added:  WP_122630826.1  blaGES-38           
+          Protein Added:  WP_122630827.1  blaGES-39           
+          Protein Added:  WP_122630828.1  blaVIM-53           
+          Protein Added:  WP_122630829.1  blaDHT2-1           
+          Protein Added:  WP_122630830.1  blaSPN79-1          
+          Protein Added:  WP_122630831.1  blaCRD3-1           
+          Protein Added:  WP_122630832.1  blaALG6-1           
+          Protein Added:  WP_122630833.1  blaALG11-1          
+          Protein Added:  WP_122630834.1  blaGRD33-1          
+          Protein Added:  WP_122630835.1  blaGRD23-1          
+          Protein Added:  WP_122630836.1  blaCMY-158          
+          Protein Added:  WP_122630837.1  blaCMY-159          
+          Protein Added:  WP_122630838.1  blaSHV-201          
+          Protein Added:  WP_122630839.1  blaSHV-202          
+          Protein Added:  WP_122630840.1  aph(2'')            
+          Protein Added:  WP_122630841.1  blaTEM-237          
+          Protein Added:  WP_122630842.1  blaOXA-655          
+          Protein Added:  WP_122630843.1  blaOXA-656          
+          Protein Added:  WP_122630844.1  blaOXA-733          
+          Protein Added:  WP_122630845.1  blaPDC-307          
+          Protein Added:  WP_122630846.1  blaPDC-308          
+          Protein Added:  WP_122630847.1  blaPDC-309          
+          Protein Added:  WP_122630848.1  blaPDC-310          
+          Protein Added:  WP_122630849.1  blaPDC-311          
+          Protein Added:  WP_122630850.1  blaPDC-312          
+          Protein Added:  WP_122630851.1  blaPDC-313          
+          Protein Added:  WP_122630852.1  blaPDC-314          
+          Protein Added:  WP_122630853.1  blaOXA-734          
+          Protein Added:  WP_122630854.1  blaOXA-735          
+          Protein Added:  WP_122630855.1  blaOXA-736          
+          Protein Added:  WP_122630856.1  blaOXA-737          
+          Protein Added:  WP_122630857.1  blaOXA-675          
+          Protein Added:  WP_122630858.1  blaOXA-676          
+          Protein Added:  WP_122630859.1  blaOXA-677          
+          Protein Added:  WP_122630860.1  blaOXA-678          
+          Protein Added:  WP_122630861.1  blaIMP-80           
+          Protein Added:  WP_122630862.1  blaCTX-M-223        
+          Protein Added:  WP_122630863.1  blaSHV-205          
+          Protein Added:  WP_122630864.1  blaOXA-680          
+          Protein Added:  WP_122630865.1  blaSHV-208          
+          Protein Added:  WP_122630866.1  blaSHV-209          
+          Protein Added:  WP_122630867.1  blaSHV-212          
+          Protein Added:  WP_122630868.1  blaSHV-213          
+          Protein Added:  WP_122630869.1  blaSHV-214          
+          Protein Added:  WP_122630870.1  blaSHV-215          
+          Protein Added:  WP_122630871.1  blaSHV-216          
+          Protein Added:  WP_122630872.1  blaSHV-217          
+          Protein Added:  WP_122630873.1  blaSHV-218          
+          Protein Added:  WP_122630874.1  blaSHV-219          
+          Protein Added:  WP_122630875.1  blaSHV-221          
+          Protein Added:  WP_122630876.1  blaSHV-222          
+          Protein Added:  WP_122630877.1  blaSHV-225          
+          Protein Added:  WP_122630878.1  blaSHV-226          
+          Protein Added:  WP_122630879.1  blaSHV-227          
+          Protein Added:  WP_122630880.1  blaSHV-228          
+          Protein Added:  WP_122630881.1  blaOXA-681          
+          Protein Added:  WP_122630882.1  blaPDC-315          
+          Protein Added:  WP_122630883.1  blaPDC-316          
+          Protein Added:  WP_122630884.1  blaOXA-682          
+          Protein Added:  WP_122630885.1  blaOXA-683          
+          Protein Added:  WP_122630886.1  blaOXA-684          
+          Protein Added:  WP_122630887.1  blaOXA-685          
+          Protein Added:  WP_122630888.1  blaOXA-686          
+          Protein Added:  WP_122630889.1  blaOXA-687          
+          Protein Added:  WP_122630890.1  blaOXA-688          
+          Protein Added:  WP_122630891.1  blaOXA-689          
+          Protein Added:  WP_122630892.1  blaOXA-690          
+          Protein Added:  WP_122630893.1  blaOXA-691          
+          Protein Added:  WP_122630894.1  blaOXA-692          
+          Protein Added:  WP_122630895.1  blaOXA-693          
+          Protein Added:  WP_122630896.1  blaOXA-694          
+          Protein Added:  WP_122630897.1  blaOXA-695          
+          Protein Added:  WP_122630898.1  blaOXA-696          
+          Protein Added:  WP_122630899.1  blaOXA-697          
+          Protein Added:  WP_122630900.1  blaOXA-698          
+          Protein Added:  WP_122630901.1  blaOXA-699          
+          Protein Added:  WP_122630902.1  blaOXA-700          
+          Protein Added:  WP_122630903.1  blaOXA-701          
+          Protein Added:  WP_122630904.1  blaOXA-702          
+          Protein Added:  WP_122630905.1  blaOXA-703          
+          Protein Added:  WP_122630906.1  blaOXA-704          
+          Protein Added:  WP_122630907.1  blaOXA-705          
+          Protein Added:  WP_122630908.1  blaOXA-706          
+          Protein Added:  WP_122630909.1  blaOXA-707          
+          Protein Added:  WP_122630910.1  blaOXA-718          
+          Protein Added:  WP_122630911.1  blaOXA-719          
+          Protein Added:  WP_122630912.1  blaOXA-720          
+          Protein Added:  WP_122630913.1  blaOXA-721          
+          Protein Added:  WP_122630914.1  blaOXA-722          
+          Protein Added:  WP_122630915.1  blaOXA-723          
+          Protein Added:  WP_122630916.1  blaOXA-708          
+          Protein Added:  WP_122630917.1  blaOXA-709          
+          Protein Added:  WP_122630918.1  blaOXA-710          
+          Protein Added:  WP_122630919.1  blaOXA-711          
+          Protein Added:  WP_122630920.1  blaOXA-712          
+          Protein Added:  WP_122630921.1  blaOXA-713          
+          Protein Added:  WP_122630922.1  blaOXA-714          
+          Protein Added:  WP_122630923.1  blaOXA-777          
+          Protein Added:  WP_122630924.1  blaOXA-778          
+          Protein Added:  WP_122634438.1  blaOXA-779          
+          Protein Added:  WP_122634439.1  blaOXA-679          
+   Gene Symbol Modified:  WP_010890145.1 qacE_gen updated to WP_010890145.1 qacE
+   Gene Symbol Modified:  WP_053515552.1 qacE_gen updated to WP_053515552.1 qacE
+   Gene Symbol Modified:  WP_063844281.1 cphA updated to WP_063844281.1 cphA3
+   Gene Symbol Modified:  WP_063854778.1 qepA updated to WP_063854778.1 qepA5
+   Gene Symbol Modified:  WP_072678505.1 blaOXA-669 updated to WP_072678505.1 blaOXA-732
+   Gene Symbol Modified:  WP_114699266.1 blaOXA-666 updated to WP_114699266.1 blaOXA-729
+   Gene Symbol Modified:  WP_116786836.1 blaOXA-667 updated to WP_116786836.1 blaOXA-730
+- AMR HMM library Changes:
+      Prev. Release:   563
+       This Release:   568
+            Removed:     0
+              Added:     5
+              HMM Added:  NF033692.1      APH_2pp_I_a_f_h     
+              HMM Added:  NF033693.0      AAC_6p_Ie_fam       
+              HMM Added:  NF033698.1      blaCSA              
+              HMM Added:  NF033700.1      blaCMA              
+              HMM Added:  NF033702.0      blaOXA-12_like      
+      HMM Name Modified:  NF033666.1 blaOXA-664_like updated to NF033666.1 blaOXA-727_like
+- Protein family changes:
+      Prev. Release:  1133
+       This Release:  1161
+            Removed:     0
+              Added:    28
+           Family Added:  -               aac(6')-Ie2         
+           Family Added:  NF033693.0      aac(6')-Ie_fam      
+           Family Added:  NF011706.2      acrB                
+           Family Added:  NF007842.1      acrD                
+           Family Added:  NF000314.1      adeB/adeJ           
+           Family Added:  NF033692.1      aph(2'')-I_a_f_h    
+           Family Added:  -               aph(2'')-If2        
+           Family Added:  -               blaALG11            
+           Family Added:  -               blaALG6             
+           Family Added:  NF033700.1      blaCMA              
+           Family Added:  -               blaCRD3             
+           Family Added:  NF033698.1      blaCSA              
+           Family Added:  -               blaCrA              
+           Family Added:  -               blaDHT2             
+           Family Added:  -               blaEAM              
+           Family Added:  -               blaECM              
+           Family Added:  -               blaEFM              
+           Family Added:  -               blaELM              
+           Family Added:  -               blaEVM              
+           Family Added:  -               blaGRD23            
+           Family Added:  -               blaGRD33            
+           Family Added:  NF033702.0      blaOXA-12_like      
+           Family Added:  -               blaPNGM             
+           Family Added:  -               blaSPN79            
+           Family Added:  -               catV                
+           Family Added:  -               crpP                
+           Family Added:  -               dfrA34              
+           Family Added:  -               qacE                
+         Family Renamed:  NF033666.1      blaOXA-664_like became blaOXA-727_like     
+
+---------------------------------------------------------------------
+Changes included in 2018-09-14.1
+----------------------------------------------------------------------
+- Protein changes:
+      Prev. Release:  4569
+       This Release:  4579
+            Removed:     0
+              Added:    10
+      Protein Added:  WP_116786828.1  mcr-4.6             
+      Protein Added:  WP_116786829.1  blaCTX-M-222        
+      Protein Added:  WP_116786830.1  mcr-1.15            
+      Protein Added:  WP_116786831.1  blaTEM-236          
+      Protein Added:  WP_116786832.1  blaKPC-37           
+      Protein Added:  WP_116786834.1  blaPDC-304          
+      Protein Added:  WP_116786836.1  blaOXA-667          
+      Protein Added:  WP_116786837.1  blaPDC-305          
+      Protein Added:  WP_116786838.1  blaPDC-306          
+      Protein Added:  WP_116786839.1  blaIMP-79           
+- AMR HMM library Changes:
+      Prev. Release:   563
+       This Release:   563
+            Removed:     0
+              Added:     0
+- Protein family changes:
+      Prev. Release:  1133
+       This Release:  1133
+            Removed:     0
+              Added:     0
+
+---------------------------------------------------------------------
+Changes included in 2018-08-24.1
+---------------------------------------------------------------------
+- Protein changes:
+      Prev. Release:  4563
+       This Release:  4569
+            Removed:     1
+              Added:     7
+        Protein Removed:  WP_063843217.1  catA1               
+          Protein Added:  WP_003436401.1  vanR-Cd             
+          Protein Added:  WP_009889012.1  vanZ1               
+          Protein Added:  WP_011861275.1  vanS-Cd             
+          Protein Added:  WP_011861276.1  vanG-Cd             
+          Protein Added:  WP_020924773.1  blaAXC-1            
+          Protein Added:  WP_072310976.1  mcr-8.2             
+          Protein Added:  WP_072678505.1  blaOXA-669          
+- AMR HMM library Changes:
+      Prev. Release:   563
+       This Release:   563
+            Removed:     0
+              Added:     0
+- Protein family changes:
+      Prev. Release:  1128
+       This Release:  1133
+            Removed:     0
+              Added:     5
+           Family Added:  -               blaAXC              
+           Family Added:  -               vanG-Cd             
+           Family Added:  -               vanR-Cd             
+           Family Added:  -               vanS-Cd             
+           Family Added:  -               vanZ1               
+
+---------------------------------------------------------------------
+Changes included in 2018-08-01.1
+---------------------------------------------------------------------
+- Protein changes:
+      Prev. Release:  4528
+       This Release:  4563
+            Removed:     0
+              Added:    35
+          Protein Added:  WP_000622776.1  qacA                
+          Protein Added:  WP_001159761.1  blaADC-176          
+          Protein Added:  WP_001211208.1  blaADC-175          
+          Protein Added:  WP_010730188.1  qacZ                
+          Protein Added:  WP_013095270.1  blaCMH-4            
+          Protein Added:  WP_032410229.1  blaOXA-663          
+          Protein Added:  WP_033487869.1  blaACT-56           
+          Protein Added:  WP_046887417.1  blaCMH-5            
+          Protein Added:  WP_047052637.1  blaACT-55           
+          Protein Added:  WP_050861789.1  blaACT-64           
+          Protein Added:  WP_070210118.1  blaOXA-658          
+          Protein Added:  WP_094935119.1  blaACT-57           
+          Protein Added:  WP_111772163.1  blaVIM-58           
+          Protein Added:  WP_111976052.1  blaACT-60           
+          Protein Added:  WP_112017656.1  blaACT-61           
+          Protein Added:  WP_112792421.1  blaACT-59           
+          Protein Added:  WP_114699266.1  blaOXA-666          
+          Protein Added:  WP_114699267.1  blaKPC-36           
+          Protein Added:  WP_114699268.1  blaADC-174          
+          Protein Added:  WP_114699269.1  blaADC-177          
+          Protein Added:  WP_114699270.1  blaADC-178          
+          Protein Added:  WP_114699271.1  blaADC-179          
+          Protein Added:  WP_114699272.1  blaADC-180          
+          Protein Added:  WP_114699273.1  blaOXA-661          
+          Protein Added:  WP_114699274.1  blaOXA-662          
+          Protein Added:  WP_114699275.1  mcr-8.1             
+          Protein Added:  WP_114699276.1  blaOXA-659          
+          Protein Added:  WP_114699277.1  blaVIM-60           
+          Protein Added:  WP_114699278.1  mcr-5.3             
+          Protein Added:  WP_114699279.1  blaOXA-660          
+          Protein Added:  WP_114699280.1  blaIMP-76           
+          Protein Added:  WP_114699281.1  blaIMP-77           
+          Protein Added:  WP_114699282.1  blaIMP-78           
+          Protein Added:  WP_114699283.1  blaVIM-59           
+          Protein Added:  WP_114699284.1  blaCTX-M-221        
+- AMR HMM library Changes:
+      Prev. Release:   557
+       This Release:   563
+            Removed:     0
+              Added:     6
+              HMM Added:  NF033648.1      blaOXA-274_like     
+              HMM Added:  NF033666.1      blaOXA-664_like     
+              HMM Added:  NF033667.0      blaOXA-55_like      
+              HMM Added:  NF033669.1      polymyxin_MCR8      
+              HMM Added:  NF033670.1      polymyxin_MCR6      
+              HMM Added:  NF033671.1      polymyxin_MCR7      
+- Protein family changes:
+      Prev. Release:  1123
+       This Release:  1128
+            Removed:     0
+              Added:     5
+           Family Added:  -               blaOXA-266_fam      
+           Family Added:  NF033648.1      blaOXA-274_like     
+           Family Added:  NF033667.1      blaOXA-55_like      
+           Family Added:  NF033666.1      blaOXA-664_like     
+           Family Added:  NF033669.1      mcr-8               
+              HMM Added:  mcr-6         updated to NF033670.1 mcr-6
+              HMM Added:  mcr-7         updated to NF033671.1 mcr-7
+
+Updates in 2018-07-07.1
+- Fix in amr_report.cpp to remove extra field from AMRFinder output
+
+Updates in 2018-06-27.1
+- Summary:
+    - Protein sequences
+        - Removed 1 protein sequence
+        - Added 290 protein sequences
+        - Changed the names of 2 proteins
+    - Gene families 
+        - cfr was reorganized
+    - HMM library
+        - 58 HMMs not in the AMR family hierarchy were removed. They were not 
+          used for AMR gene identification so this should have no effect on 
+          AMRFinder output.
+        - The polymyxin_MCR3 HMM was updated
+- Details:
+        Protein Removed:  WP_063945333.1  aac(6')-IIa         
+          Protein Added:  WP_000131886.1  aac(3)-VIa          
+          Protein Added:  WP_000778180.1  varG                
+          Protein Added:  WP_001100752.1  blaPER-10           
+          Protein Added:  WP_002812372.1  blaOXA-578          
+          Protein Added:  WP_002824679.1  blaOXA-595          
+          Protein Added:  WP_002837769.1  blaOXA-579          
+          Protein Added:  WP_002857546.1  blaOXA-592          
+          Protein Added:  WP_002889704.1  blaOXA-591          
+          Protein Added:  WP_002936877.1  blaOXA-623          
+          Protein Added:  WP_011339581.1  blaRHO              
+          Protein Added:  WP_011497575.1  blaSHN-1            
+          Protein Added:  WP_011550565.1  blaMYX-1            
+          Protein Added:  WP_011638903.1  mcr-4.3             
+          Protein Added:  WP_012263521.1  mupA                
+          Protein Added:  WP_012541790.1  blaLEN-28           
+          Protein Added:  WP_012698469.1  blaLHK-7            
+          Protein Added:  WP_013255389.1  blaSPS-1            
+          Protein Added:  WP_013992183.1  blaZOG-1            
+          Protein Added:  WP_014206564.1  blaOXA-642          
+          Protein Added:  WP_015058260.1  qnrS11              
+          Protein Added:  WP_015266427.1  blaECV-1            
+          Protein Added:  WP_015431537.1  blaROB-2            
+          Protein Added:  WP_015818996.1  blaTTU-1            
+          Protein Added:  WP_016252988.1  blaPDC-286          
+          Protein Added:  WP_021018581.1  catB8               
+          Protein Added:  WP_025006557.1  blaOXA-580          
+          Protein Added:  WP_026025287.1  blaALI-1            
+          Protein Added:  WP_031192893.1  aadA31              
+          Protein Added:  WP_034035338.1  blaPDC-240          
+          Protein Added:  WP_035203840.1  catA10              
+          Protein Added:  WP_038333643.1  blaEBR-2            
+          Protein Added:  WP_038640920.1  qnrB12              
+          Protein Added:  WP_041079981.1  erm(44)v            
+          Protein Added:  WP_041258349.1  blaFIA-1            
+          Protein Added:  WP_041385949.1  blaSGM-2            
+          Protein Added:  WP_041449074.1  blaANA-1            
+          Protein Added:  WP_043774378.1  catA13              
+          Protein Added:  WP_043942497.1  blaPST-1            
+          Protein Added:  WP_044600959.1  blaOXA-594          
+          Protein Added:  WP_044779552.1  blaOXA-638          
+          Protein Added:  WP_048236419.1  qnrB85              
+          Protein Added:  WP_052259183.1  erm(42)             
+          Protein Added:  WP_052781249.1  blaOXA-583          
+          Protein Added:  WP_052788483.1  blaOXA-611          
+          Protein Added:  WP_052788887.1  blaOXA-581          
+          Protein Added:  WP_052794776.1  blaOXA-625          
+          Protein Added:  WP_052798312.1  blaOXA-609          
+          Protein Added:  WP_052800105.1  blaOXA-597          
+          Protein Added:  WP_052803794.1  blaOXA-601          
+          Protein Added:  WP_052858477.1  blaOXA-637          
+          Protein Added:  WP_053872444.1  blaOXA-639          
+          Protein Added:  WP_053921012.1  blaOXA-603          
+          Protein Added:  WP_057036510.1  blaOXA-629          
+          Protein Added:  WP_058157026.1  blaPDC-271          
+          Protein Added:  WP_058174497.1  blaPDC-250          
+          Protein Added:  WP_058870660.1  blaOXA-651          
+          Protein Added:  WP_058951457.1  blaOXA-652          
+          Protein Added:  WP_061193431.1  blaPDC-298          
+          Protein Added:  WP_064186845.1  qnrS13              
+          Protein Added:  WP_065597326.1  blaALI-2            
+          Protein Added:  WP_065801616.1  mcr-3.20            
+          Protein Added:  WP_065908739.1  qnrB91              
+          Protein Added:  WP_070233680.1  blaOXA-614          
+          Protein Added:  WP_070698497.1  blaPDC-278          
+          Protein Added:  WP_071701819.1  qnrS12              
+          Protein Added:  WP_071846333.1  aac(6')_Serra       
+          Protein Added:  WP_073669325.1  blaPDC-285          
+          Protein Added:  WP_075606311.1  blaROB-3            
+          Protein Added:  WP_078207746.1  qnrE2               
+          Protein Added:  WP_078318620.1  blaROB-4            
+          Protein Added:  WP_080699425.1  blaTEM-229          
+          Protein Added:  WP_081048762.1  blaMYO-1            
+          Protein Added:  WP_081666691.1  blaLHK-1            
+          Protein Added:  WP_085843691.1  qnrB95              
+          Protein Added:  WP_087696200.1  blaOXA-576          
+          Protein Added:  WP_087879616.1  mcr-3.19            
+          Protein Added:  WP_088303859.1  blaOXA-624          
+          Protein Added:  WP_094308975.1  mcr-3.22            
+          Protein Added:  WP_094312656.1  mcr-3.21            
+          Protein Added:  WP_094313523.1  mcr-3.23            
+          Protein Added:  WP_094321595.1  mcr-3.24            
+          Protein Added:  WP_094963248.1  aadA31              
+          Protein Added:  WP_096170112.1  qnrS14              
+          Protein Added:  WP_096865225.1  blaPER-12           
+          Protein Added:  WP_100831609.1  blaPDC-245          
+          Protein Added:  WP_103034696.1  blaROB-5            
+          Protein Added:  WP_103252528.1  mcr-3.25            
+          Protein Added:  WP_104009831.1  blaPER-11           
+          Protein Added:  WP_104009832.1  blaPDC-234          
+          Protein Added:  WP_104009833.1  blaPDC-235          
+          Protein Added:  WP_104009834.1  blaPDC-236          
+          Protein Added:  WP_104009835.1  blaPDC-237          
+          Protein Added:  WP_104009836.1  blaPDC-238          
+          Protein Added:  WP_104009837.1  blaPDC-239          
+          Protein Added:  WP_104009838.1  blaPDC-241          
+          Protein Added:  WP_104009839.1  blaPDC-242          
+          Protein Added:  WP_104009840.1  blaPDC-243          
+          Protein Added:  WP_104009841.1  blaPDC-244          
+          Protein Added:  WP_104009842.1  blaPDC-246          
+          Protein Added:  WP_104009843.1  blaPDC-247          
+          Protein Added:  WP_104009844.1  blaPDC-248          
+          Protein Added:  WP_104009846.1  blaVIM-56           
+          Protein Added:  WP_104009847.1  blaCTX-M-178        
+          Protein Added:  WP_104009848.1  blaCTX-M-187        
+          Protein Added:  WP_104009849.1  blaCMY-156          
+          Protein Added:  WP_104009850.1  mcr-1.12            
+          Protein Added:  WP_104009851.1  mcr-7.1             
+          Protein Added:  WP_104009852.1  blaIMP-71           
+          Protein Added:  WP_104009853.1  blaOXA-575          
+          Protein Added:  WP_104009854.1  blaTEM-230          
+          Protein Added:  WP_104009855.1  blaTEM-231          
+          Protein Added:  WP_104009856.1  blaPDC-227          
+          Protein Added:  WP_104009857.1  blaPDC-228          
+          Protein Added:  WP_104009858.1  blaPDC-229          
+          Protein Added:  WP_104009859.1  blaPDC-230          
+          Protein Added:  WP_104009860.1  blaPDC-231          
+          Protein Added:  WP_104009861.1  blaPDC-232          
+          Protein Added:  WP_104009862.1  blaPDC-233          
+          Protein Added:  WP_104531863.1  blaBUT-1            
+          Protein Added:  WP_104531864.1  blaBUT-2            
+          Protein Added:  WP_104531865.1  blaLHK-2            
+          Protein Added:  WP_104531866.1  blaLHK-3            
+          Protein Added:  WP_104531867.1  blaLHK-4            
+          Protein Added:  WP_104531868.1  blaLHK-5            
+          Protein Added:  WP_104531869.1  blaLHK-6            
+          Protein Added:  WP_106672612.1  blaCMY-150          
+          Protein Added:  WP_106924209.1  blaCTX-M-213        
+          Protein Added:  WP_109544237.1  tet(S)              
+          Protein Added:  WP_109545031.1  dfrA14              
+          Protein Added:  WP_109545032.1  qnrB11              
+          Protein Added:  WP_109545033.1  vanY-D              
+          Protein Added:  WP_109545034.1  qnrB22              
+          Protein Added:  WP_109545035.1  qacF                
+          Protein Added:  WP_109545038.1  tet(33)             
+          Protein Added:  WP_109545039.1  blaSTA-1            
+          Protein Added:  WP_109545040.1  chrB                
+          Protein Added:  WP_109545041.1  aph(3'')-Ib         
+          Protein Added:  WP_109545042.1  blaORR-1            
+          Protein Added:  WP_109545044.1  blaKPC-34           
+          Protein Added:  WP_109545045.1  qnrD3               
+          Protein Added:  WP_109545046.1  qnrB81              
+          Protein Added:  WP_109545047.1  qnrB82              
+          Protein Added:  WP_109545048.1  blaOXA-542          
+          Protein Added:  WP_109545049.1  blaNDM-20           
+          Protein Added:  WP_109545050.1  blaCRH-2            
+          Protein Added:  WP_109545051.1  blaCRH-3            
+          Protein Added:  WP_109545053.1  blaIMP-73           
+          Protein Added:  WP_109545054.1  mcr-4.5             
+          Protein Added:  WP_109545055.1  mcr-4.4             
+          Protein Added:  WP_109545056.1  mcr-1.13            
+          Protein Added:  WP_109545057.1  mcr-5.2             
+          Protein Added:  WP_109545058.1  mcr-4.2             
+          Protein Added:  WP_109545059.1  blaTEM-232          
+          Protein Added:  WP_109545060.1  blaCTX-M-208        
+          Protein Added:  WP_109545061.1  blaCTX-M-209        
+          Protein Added:  WP_109545062.1  blaCTX-M-210        
+          Protein Added:  WP_109545063.1  blaCTX-M-211        
+          Protein Added:  WP_109545064.1  blaCTX-M-212        
+          Protein Added:  WP_109545065.1  blaCMY-161          
+          Protein Added:  WP_109545066.1  blaFOX-16           
+          Protein Added:  WP_109545067.1  blaDHA-27           
+          Protein Added:  WP_109545068.1  blaDHA-26           
+          Protein Added:  WP_109545069.1  blaCTX-M-214        
+          Protein Added:  WP_109545070.1  mcr-3.12            
+          Protein Added:  WP_109545071.1  blaOXA-649          
+          Protein Added:  WP_109545072.1  blaOXA-641          
+          Protein Added:  WP_109545073.1  blaFRI-5            
+          Protein Added:  WP_109545074.1  blaGPC-1            
+          Protein Added:  WP_109545075.1  blaOXA-619          
+          Protein Added:  WP_109545076.1  blaOXA-620          
+          Protein Added:  WP_109545077.1  blaOXA-636          
+          Protein Added:  WP_109545078.1  blaOXA-635          
+          Protein Added:  WP_109545079.1  blaOXA-631          
+          Protein Added:  WP_109545080.1  blaOXA-626          
+          Protein Added:  WP_109545081.1  blaOXA-627          
+          Protein Added:  WP_109545082.1  blaOXA-633          
+          Protein Added:  WP_109545083.1  blaOXA-628          
+          Protein Added:  WP_109545084.1  blaOXA-634          
+          Protein Added:  WP_109545085.1  blaOXA-630          
+          Protein Added:  WP_109545086.1  blaOXA-632          
+          Protein Added:  WP_109545087.1  blaOXA-608          
+          Protein Added:  WP_109545088.1  blaOXA-584          
+          Protein Added:  WP_109545089.1  blaOXA-585          
+          Protein Added:  WP_109545090.1  blaOXA-586          
+          Protein Added:  WP_109545091.1  blaOXA-577          
+          Protein Added:  WP_109545092.1  blaOXA-587          
+          Protein Added:  WP_109545093.1  blaOXA-596          
+          Protein Added:  WP_109545094.1  blaOXA-600          
+          Protein Added:  WP_109545095.1  blaOXA-588          
+          Protein Added:  WP_109545096.1  blaOXA-589          
+          Protein Added:  WP_109545097.1  blaOXA-593          
+          Protein Added:  WP_109545098.1  blaOXA-599          
+          Protein Added:  WP_109545099.1  blaOXA-610          
+          Protein Added:  WP_109545100.1  blaOXA-612          
+          Protein Added:  WP_109545101.1  blaOXA-598          
+          Protein Added:  WP_109545102.1  blaOXA-607          
+          Protein Added:  WP_109545103.1  blaOXA-590          
+          Protein Added:  WP_109545104.1  blaOXA-604          
+          Protein Added:  WP_109545105.1  blaOXA-602          
+          Protein Added:  WP_109545106.1  blaOXA-606          
+          Protein Added:  WP_109545107.1  blaOXA-582          
+          Protein Added:  WP_109545108.1  blaOXA-605          
+          Protein Added:  WP_109545109.1  blaOXA-640          
+          Protein Added:  WP_109545110.1  blaOXA-616          
+          Protein Added:  WP_109545111.1  blaOXA-613          
+          Protein Added:  WP_109545112.1  blaOXA-622          
+          Protein Added:  WP_109545113.1  blaOXA-618          
+          Protein Added:  WP_109545114.1  blaOXA-617          
+          Protein Added:  WP_109545115.1  blaOXA-615          
+          Protein Added:  WP_109545116.1  blaOXA-621          
+          Protein Added:  WP_109791184.1  blaTEM-233          
+          Protein Added:  WP_109791185.1  blaPDC-251          
+          Protein Added:  WP_109791186.1  blaPDC-252          
+          Protein Added:  WP_109791187.1  blaPDC-253          
+          Protein Added:  WP_109791188.1  blaPDC-254          
+          Protein Added:  WP_109791189.1  blaPDC-255          
+          Protein Added:  WP_109791190.1  blaPDC-256          
+          Protein Added:  WP_109791191.1  blaPDC-257          
+          Protein Added:  WP_109791192.1  blaPDC-258          
+          Protein Added:  WP_109791193.1  blaPDC-259          
+          Protein Added:  WP_109791194.1  blaPDC-260          
+          Protein Added:  WP_109791195.1  blaPDC-261          
+          Protein Added:  WP_109791196.1  blaPDC-262          
+          Protein Added:  WP_109791197.1  blaPDC-263          
+          Protein Added:  WP_109791198.1  blaPDC-264          
+          Protein Added:  WP_109791199.1  blaPDC-265          
+          Protein Added:  WP_109791200.1  blaPDC-266          
+          Protein Added:  WP_109791201.1  blaPDC-267          
+          Protein Added:  WP_109791202.1  blaPDC-268          
+          Protein Added:  WP_109791203.1  blaPDC-270          
+          Protein Added:  WP_109791204.1  blaPDC-272          
+          Protein Added:  WP_109791205.1  blaPDC-273          
+          Protein Added:  WP_109791206.1  blaPDC-274          
+          Protein Added:  WP_109791207.1  blaIMP-74           
+          Protein Added:  WP_109791208.1  blaIMP-75           
+          Protein Added:  WP_109791209.1  blaCTX-M-216        
+          Protein Added:  WP_109791210.1  blaTEM-234          
+          Protein Added:  WP_109791211.1  blaCTX-M-217        
+          Protein Added:  WP_109791212.1  blaSHV-204          
+          Protein Added:  WP_109791213.1  blaNDM-22           
+          Protein Added:  WP_109791214.1  blaCTX-M-218        
+          Protein Added:  WP_109791215.1  blaCMY-160          
+          Protein Added:  WP_109791216.1  blaOXA-654          
+          Protein Added:  WP_109997726.1  qnrA9               
+          Protein Added:  WP_110092882.1  blaCTX-M-219        
+          Protein Added:  WP_111273842.1  mcr-3.13            
+          Protein Added:  WP_111273843.1  mcr-3.14            
+          Protein Added:  WP_111273844.1  mcr-3.15            
+          Protein Added:  WP_111273845.1  mcr-3.16            
+          Protein Added:  WP_111273846.1  mcr-3.17            
+          Protein Added:  WP_111273847.1  mcr-3.18            
+          Protein Added:  WP_111273848.1  blaGES-35           
+          Protein Added:  WP_111273849.1  blaGES-36           
+          Protein Added:  WP_111273850.1  blaGES-37           
+          Protein Added:  WP_111273851.1  blaCMY-162          
+          Protein Added:  WP_111273852.1  blaKPC-35           
+          Protein Added:  WP_111672883.1  blaPDC-275          
+          Protein Added:  WP_111672884.1  blaPDC-294          
+          Protein Added:  WP_111672885.1  blaPDC-295          
+          Protein Added:  WP_111672886.1  blaPDC-296          
+          Protein Added:  WP_111672887.1  blaPDC-297          
+          Protein Added:  WP_111672888.1  blaPDC-299          
+          Protein Added:  WP_111672889.1  blaPDC-300          
+          Protein Added:  WP_111672890.1  blaPDC-276          
+          Protein Added:  WP_111672891.1  blaPDC-277          
+          Protein Added:  WP_111672892.1  blaPDC-279          
+          Protein Added:  WP_111672893.1  blaPDC-280          
+          Protein Added:  WP_111672894.1  blaPDC-281          
+          Protein Added:  WP_111672895.1  blaPDC-282          
+          Protein Added:  WP_111672896.1  blaPDC-283          
+          Protein Added:  WP_111672897.1  blaPDC-284          
+          Protein Added:  WP_111672898.1  blaPDC-287          
+          Protein Added:  WP_111672899.1  blaPDC-288          
+          Protein Added:  WP_111672900.1  blaPDC-289          
+          Protein Added:  WP_111672901.1  blaPDC-290          
+          Protein Added:  WP_111672902.1  blaCTX-M-220        
+          Protein Added:  WP_111672903.1  blaPDC-291          
+          Protein Added:  WP_111672904.1  blaPDC-292          
+          Protein Added:  WP_111672905.1  blaPDC-293          
+          Protein Added:  WP_111672906.1  blaCMY-163          
+          Protein Added:  WP_111672907.1  blaOXA-657          
+          Protein Added:  WP_111672908.1  blaPDC-301          
+          Protein Added:  WP_111672909.1  blaPDC-302          
+          Protein Added:  WP_111672910.1  blaPDC-303          
+          Protein Added:  WP_111672911.1  blaKPC-23           
+          Protein Added:  WP_111672912.1  blaNDM-23           
+          Protein Added:  WP_111672913.1  blaNDM-24           
+          Protein Added:  WP_111672914.1  blaVIM-57           
+          Protein Added:  WP_111690897.1  cfr(B)              
+          Protein Added:  WP_111690898.1  cfr(C)              
+       Protein Modified:  WP_011987126.1 cfrC updated to WP_011987126.1 cfr-Cb
+       Protein Modified:  WP_063854808.1 qnrS updated to WP_063854808.1 qnrS10
+            HMM Removed:  NF000031.1      MFS_efflux_LmrA     
+            HMM Removed:  NF000040.1      172051428_tet       
+            HMM Removed:  NF000058.1      Erm41               
+            HMM Removed:  NF000060.1      MFS_efflux_LmrB     
+            HMM Removed:  NF000106.1      40850658_otr        
+            HMM Removed:  NF000131.1      MATE_multi_MepA     
+            HMM Removed:  NF000140.3      AAC_6p_Salmo        
+            HMM Removed:  NF000217.1      MATE_multi_FepA     
+            HMM Removed:  NF000247.1      MexA                
+            HMM Removed:  NF000249.1      MexE                
+            HMM Removed:  NF000250.1      MexH                
+            HMM Removed:  NF000251.1      MexW-MexI           
+            HMM Removed:  NF000252.1      MexX                
+            HMM Removed:  NF000263.1      MATE_multi_NorM     
+            HMM Removed:  NF000282.2      RND_permease_1      
+            HMM Removed:  NF000313.1      adeA-adeI           
+            HMM Removed:  NF000314.1      adeB                
+            HMM Removed:  NF000315.1      adeC-adeK-oprM      
+            HMM Removed:  NF000334.3      drrA                
+            HMM Removed:  NF000336.1      emrE                
+            HMM Removed:  NF000342.3      glpA_Cterm          
+            HMM Removed:  NF000344.1      macA                
+            HMM Removed:  NF000345.1      macB                
+            HMM Removed:  NF000349.1      mfpA_AE000516.2     
+            HMM Removed:  NF000352.1      norA                
+            HMM Removed:  NF000357.1      romA                
+            HMM Removed:  NF000391.1      EmrB                
+            HMM Removed:  NF010314.2      PRK13751.2          
+            HMM Removed:  NF012135.0      ANT_3pp_9_crypt     
+            HMM Removed:  NF012144.2      ramA_TF             
+            HMM Removed:  NF012163.2      BaeS_SmeS           
+            HMM Removed:  NF012168.1      BlaI_of_BCL         
+            HMM Removed:  NF012198.0      MarA_TF             
+            HMM Removed:  NF012208.0      SDR_dihy_bifunc     
+            HMM Removed:  NF012226.0      AdeS_HK             
+            HMM Removed:  NF012227.0      AdeR_RR             
+            HMM Removed:  NF012228.1      RobA_TF             
+            HMM Removed:  NF028537.1      P_eth_NH2_trans     
+            HMM Removed:  NF030466.0      TIGR02052           
+            HMM Removed:  NF030467.0      TIGR02053           
+            HMM Removed:  NF033086.2      penta_rpt_Qnr       
+            HMM Removed:  NF033124.1      estX                
+            HMM Removed:  NF033134.0      cmlA_floR           
+            HMM Removed:  NF033138.1      RND-peri-MexC       
+            HMM Removed:  NF033142.1      efflux_OM_AdeC      
+            HMM Removed:  NF033143.1      efflux_OM_AdeK      
+            HMM Removed:  NF033184.1      B3_Acin_new1        
+            HMM Removed:  NF033480.1      bifunc_MprF         
+            HMM Removed:  NF033553.1      MerP_Gpos           
+            HMM Removed:  NF033555.1      lyase_MerB          
+            HMM Removed:  NF033556.1      MerTP_fusion        
+            HMM Removed:  NF033560.1      merT_RC607          
+            HMM Removed:  NF033565.0      trans_MerF          
+            HMM Removed:  NF033606.1      heat_AAA_ClpK       
+            HMM Removed:  NF033607.0      disagg_AAA_ClpG     
+            HMM Removed:  NF033617.1      RND_permease_2      
+            HMM Removed:  NF033627.1      intimin_all         
+            HMM Removed:  NF033636.1      acid_shock_Asr      
+           HMM Modified:  NF033408.2 polymyxin_MCR3 updated to NF033408.5 polymyxin_MCR3
+         Family Removed:  -               cfrC                
+           Family Added:  -               cfr(B)              
+           Family Added:  -               cfr(C)              
+           Family Added:  -               cfr-Cb              
+         Family Changed:  NF033408.2 mcr-3 updated to NF033408.5 mcr-3
+
+---------------------------------------------------------------------
+Changes included in 2018-05-15.1
+---------------------------------------------------------------------
+- Data Changes:
+        Protein Removed:  WP_010886396.1  lmr(B)              
+              HMM Added:  NF033614.1      APH_6_Ic_gen        
+              HMM Added:  NF033617.1      RND_permease_2      
+              HMM Added:  NF033626.1      blaBKC_GPC          
+              HMM Added:  NF033627.1      intimin_all         
+              HMM Added:  NF033636.1      acid_shock_Asr      
+           HMM Modified:  NF000011.1      APH_6_Ic updated to NF000011.2 APH_6_Ic
+           HMM Modified:  NF000221.3      FosA updated to NF000221.4 FosA
+           HMM Modified:  NF000282.1      RND_permease_1 updated to NF000282.2 RND_permease_1
+           HMM Modified:  NF000428.2      blaFRI updated to NF000428.4 blaFRI
+           HMM Modified:  NF033582.0      blaALI updated to NF033582.2 blaALI
+         Family Removed:  NF000060.1      lmr(B)              
+           Family Added:  NF033626.1      blaBKC_GPC          
+           Family Added:  -               blaGPC              
+- Algorithm Changes: 
+    - Partial proteins identified as "Method" PARTIAL if length of blast 
+      alignment > 50% and < 90% of database protein.
+
+---------------------------------------------------------------------
+Changes included in 2018-05-08.1  RELEASE CANDIDATE
+---------------------------------------------------------------------
+- Addition of handling for genbank plasmid gff 
+
+---------------------------------------------------------------------
+Changes included in 2018-04-16.1
+---------------------------------------------------------------------
+- Addition of file format checking for FASTA and GFF files before AMRFinder blast and HMM searches are run
+- Altered format of fam.tab file to include NF accessions for families
+- Removal of non-reportable families from fam.tab

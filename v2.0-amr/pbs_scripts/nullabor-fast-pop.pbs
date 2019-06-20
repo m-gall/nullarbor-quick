@@ -1,0 +1,42 @@
+#!/bin/bash
+#PBS -P STM_LM_NGS
+#PBS -l select=1:ncpus=10:mem=32GB
+#PBS -l walltime=24:00:00
+#PBS -q alloc-zz
+
+
+
+################################################################################################
+# Shell script to execute a modified version of nullarbor
+# Author: Mailie Gall
+# Date: May 2019
+# Acknowledgements: This is a hack of Nullarbor v1.3 written by Torsten Seeman.
+# Description:
+# This wrapper script is the entry-point for versions of nullarbor which have been modified for faster execution.
+# This includes switching off the following tools, which are not use by CIDM, and slow down the analysis:
+# - roary
+#
+# The nullarbor perl script has been split into 'isolate' vs 'population-level' analyses. This allows the isolate analysis to be scattered across
+# cpus, and then gathered for execution once these analyses are complete.
+# Please be forgiving - this is not an elegant, true parallel solution but an ugly hack.
+
+module load nullarbor/1.3-dev
+
+CPU=10
+
+export KRAKEN_DEFAULT_DB='/project/data/kraken/minikraken_20141208'
+
+wkdir="/scratch/RDS-FSC-TRG_STM_Val-RW/nullarbor-fast/"
+
+cd $wkdir
+
+input="/scratch/RDS-FSC-TRG_STM_Val-RW/nullarbor-fast/inputlist.tsv"
+outputdir="/scratch/RDS-FSC-TRG_STM_Val-RW/Mailie_GBS/output/2/"
+reference="/scratch/RDS-FSC-TRG_STM_Val-RW/Mailie_GBS/CP010867.fa"
+project_name="isolate"
+
+NULLABOR_HOME="/scratch/RDS-FSC-TRG_STM_Val-RW/nullarbor-fast/v2.0/bin"
+
+echo [$(date +"%m/%d/%y  %H:%M:%S")] Nullarbor fast population-level analyses started
+
+perl ${NULLABOR_HOME}/nullarbor-fast-isolate.pl --name $project_name --input /scratch/RDS-FSC-TRG_STM_Val-RW/nullarbor-fast/input.${PBS_ARRAY_INDEX}.tsv --outdir $outputdir --ref $reference --cpus $CPU --assembler skesa --force --run;
